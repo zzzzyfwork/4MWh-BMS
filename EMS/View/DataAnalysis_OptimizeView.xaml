@@ -1,0 +1,77 @@
+﻿<Page x:Class="EMS.View.DataAnalysis_OptimizeView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:trl="clr-namespace:EMS.MyControl"
+      xmlns:oxy="http://oxyplot.org/wpf"
+      xmlns:local="clr-namespace:EMS.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="DataAnalysis_OptimizeView">
+    <Grid Background="#121F40">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" >
+                <Label Content="BCMU" VerticalAlignment="Center" Foreground="White"></Label>
+                <!--<trl:IDInput Width="90" Margin="2" IdText="{Binding IdSeries,Mode=TwoWay}"></trl:IDInput>-->
+                <TextBox Width="50" Text="{Binding SelectedTotal}"   Background="White" Height="30"></TextBox>
+                <Label Content="BMU" VerticalAlignment="Center" Foreground="White"></Label>
+                <TextBox Width="50" Text="{Binding SelectedSeries}" Background="White" Height="30"></TextBox>
+                <Label Content="开始时间" VerticalAlignment="Center" Foreground="White"></Label>
+                <DatePicker x:Name="Test1" VerticalContentAlignment="Center" Margin="10 2 2 2" Text="{Binding StartTime1, Mode=TwoWay}" Width="90"   Background="White"></DatePicker>
+                <trl:DateInput Width="90" Margin="2" DateText="{Binding StartTime2, Mode=TwoWay}" x:Name ="Input1"></trl:DateInput>
+                <Label Content="终止时间" VerticalAlignment="Center" Foreground="White"></Label>
+                <DatePicker Name="Test3" VerticalContentAlignment="Center" Margin="10 2 2 2" Text="{Binding EndTime1, Mode=TwoWay}" Width="90" Foreground="White" Background="White"></DatePicker>
+                <trl:DateInput Width="90" Margin="2" DateText="{Binding EndTime2, Mode=TwoWay}"></trl:DateInput>
+                <Button Content="查询" Command="{Binding QueryCommand}" Width="80" Margin="3"  x:Name="QueryButton"  ></Button>
+            </StackPanel>
+            <Grid Grid.Row="1" Grid.Column="0" Width="140" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <ListBox Grid.Column="0" SelectionMode="Extended" SelectionChanged="BatteryList_SelectionChanged" Foreground="White">
+                    <ListBoxItem Content="1"></ListBoxItem>
+                    <ListBoxItem Content="2"></ListBoxItem>
+                    <ListBoxItem Content="3"></ListBoxItem>
+                    <ListBoxItem Content="4"></ListBoxItem>
+                    <ListBoxItem Content="5"></ListBoxItem>
+                    <ListBoxItem Content="6"></ListBoxItem>
+                    <ListBoxItem Content="7"></ListBoxItem>
+                    <ListBoxItem Content="8"></ListBoxItem>
+                    <ListBoxItem Content="9"></ListBoxItem>
+                    <ListBoxItem Content="10"></ListBoxItem>
+                    <ListBoxItem Content="11"></ListBoxItem>
+                    <ListBoxItem Content="12"></ListBoxItem>
+                    <ListBoxItem Content="13"></ListBoxItem>
+                    <ListBoxItem Content="14"></ListBoxItem>
+                </ListBox>
+                <ListBox Grid.Column="1" SelectionChanged="DataTypeList_SelectionChanged" SelectedItem="{Binding SelectedType}" SelectedIndex="{Binding SelectedTypeIndex}" Foreground="White">
+                    <ListBoxItem Content="Voltage"></ListBoxItem>
+                    <ListBoxItem Content="SOC"></ListBoxItem>
+                    <ListBoxItem Content="Resistance"></ListBoxItem>
+                    <ListBoxItem Content="Temperature1"></ListBoxItem>
+                    <ListBoxItem Content="Temperature2"></ListBoxItem>
+                    <ListBoxItem Content="Capacity"></ListBoxItem>
+                </ListBox>
+            </Grid>
+            <oxy:PlotView Grid.Row="1" Grid.Column="1" Model="{Binding DisplayDataModel}" Background="AliceBlue">
+
+            </oxy:PlotView>
+        </Grid>
+    </Grid>
+</Page>

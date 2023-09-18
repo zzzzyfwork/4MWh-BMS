@@ -1,0 +1,490 @@
+﻿<UserControl x:Class="EMS.MyControl.DataControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:oxy="http://oxyplot.org/wpf"
+             xmlns:local="clr-namespace:EMS.MyControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="200">
+
+    <UserControl.Resources>
+        <Style x:Key="EmptyTooltipStyle" TargetType="ToolTip">
+            <Style.Triggers>
+                <Trigger Property="Content" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </Trigger>
+                <Trigger Property="Content" Value="">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
+    <Border CornerRadius="5" BorderThickness="2" Name="DataView">
+        
+            <Border.Background>
+                <ImageBrush ImageSource="pack://application:,,,/EMS;component/Resource/Image/DataControlBorder.png"/>
+            </Border.Background>
+      
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="auto"/>
+
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Separator Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Opacity="1" Margin="3,0">
+                <Separator.Background >
+                    <ImageBrush ImageSource="pack://application:,,,/EMS;component/Resource/Image/SepBac.png"/>
+                </Separator.Background>
+            </Separator>
+            
+            <Border CornerRadius="5 5 0 0" Grid.Row="0">
+               
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="{Binding TotalID}" Margin="5 6 5 0" VerticalAlignment="Center" Foreground="white"  FontSize="13"  FontWeight="DemiBold">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="#7EFFFF"  Direction="0" ShadowDepth="0"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <Image Margin="5 0 5 0" HorizontalAlignment="Right" Source="../Resource/Image/Error.png" Visibility="Collapsed"></Image>
+                   
+                    <Grid Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition />
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="45"/>
+                            
+
+
+                        </Grid.ColumnDefinitions>
+                        <Border Background="#882BC766" Width="4" CornerRadius="0,5,5,0" Height="6"
+                                        VerticalAlignment="Center" Grid.Column="3" HorizontalAlignment="Left" Opacity="0.8"></Border>
+                        <Border Background="white"   CornerRadius="2,2,2,2" Grid.Column="2"
+                                       Width="23" Height="14" BorderThickness="2" 
+                                BorderBrush="#882BC766" Margin="1,5,0.5,5"  Opacity="0.8">
+                            <TextBlock Text="{Binding TotalSOC, StringFormat={}{0:F1}%}" FontSize="6" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <Grid Grid.Column="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="8"/>
+                                </Grid.RowDefinitions>
+                                <Border Background="White" Height="15" Width="3"  CornerRadius="1,1,0,0" BorderBrush="Red" BorderThickness="0.3" VerticalAlignment="Bottom" Opacity="0.8"/>
+                                <Border Background="Red" VerticalAlignment="Top" CornerRadius="1,1,3,3" Height="3" Width="4" Grid.Row="1" Opacity="0.8"/>
+                            </Grid>
+                            <StackPanel  Grid.Column="1" Margin="0,2,0,0">
+                                <TextBlock FontSize="8" Text="平均温度:" Foreground="White"/>
+                                <TextBlock FontSize="8" Foreground="White" >
+                                    <Run Text="{Binding AverageTemperature}"/>
+                                    <Run Text="℃" FontSize="6"/>
+                                </TextBlock>
+                                <StackPanel.ToolTip>
+                                    <ToolTip Height="auto" Width="auto">
+                                        <StackPanel>
+                                            <TextBlock>
+                                    <Run Text="{Binding MinTemperature, StringFormat=Min:{0:F3}℃}"/>
+                                    <Run Text="{Binding MinTemperatureIndex, StringFormat=({0})}"/>
+                                            </TextBlock>
+                                            <TextBlock>
+                                    <Run Text="{Binding MaxTemperature, StringFormat=Max:{0:F3}℃}"/>
+                                    <Run Text="{Binding MaxTemperatureIndex, StringFormat=({0})}"/>
+                                            </TextBlock>
+                                        </StackPanel>
+                                        
+                                    </ToolTip>
+                                </StackPanel.ToolTip>
+                                
+                            </StackPanel>
+                                
+
+
+
+
+                          
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+
+            </Border>
+
+            <Grid Grid.Row="2"  >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    
+                    
+                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="White" Margin="5,0,0,0" >
+                    <Run Text="总电压:"/>
+                    <Run Text="{Binding TotalVoltage, StringFormat={}{0:F3}}"/>
+                    <Run Text="V" FontSize="10"/>
+                    <TextBlock.ToolTip>
+                        <ToolTip Height="auto" Width="auto">
+                            <StackPanel>
+                                <TextBlock>
+                                    <Run Text="{Binding MinVoltage, StringFormat=Min:{0:F3}V}"/>
+                                    <Run Text="{Binding MinVoltageIndex, StringFormat=({0})}"/>
+                                </TextBlock>
+                                <TextBlock>
+                                    <Run Text="{Binding MaxVoltage, StringFormat=Max:{0:F3}V}"/>
+                                    <Run Text="{Binding MaxVoltageIndex, StringFormat=({0})}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </TextBlock.ToolTip>
+                </TextBlock>
+                <Grid Grid.Row="0" Grid.Column="1">
+                    
+                    <!--<TextBlock FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
+                        <Run Text="{Binding MinVoltage, StringFormat=Min:{0:F3}V}" />
+                        <Run Text="{Binding MinVoltageIndex, StringFormat=({0})}"/>
+                    </TextBlock>
+                    <TextBlock FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1">
+                        <Run Text="{Binding MaxVoltage, StringFormat=Max:{0:F3}V}" />
+                        <Run Text="{Binding MaxVoltageIndex, StringFormat=({0})}"/>
+                    </TextBlock>-->
+                    
+                    
+                </Grid>
+                <Separator Grid.Row="1" Grid.Column="0" Margin="5 0 5 0" Grid.ColumnSpan="2" Opacity="1">
+                    <Separator.Background >
+                        <ImageBrush ImageSource="pack://application:,,,/EMS;component/Resource/Image/SepBac.png"/>
+                    </Separator.Background>
+                </Separator>
+                <TextBlock Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="White" Margin="5,0,0,0">
+                    <Run Text="总电流:"/>
+                    <Run Text="{Binding TotalCurrent, StringFormat={}{0:F3}}"/>
+                    <Run Text="A" FontSize="10"/>
+                </TextBlock>
+                <Separator Grid.Row="3" Grid.Column="0" Margin="5 0 5 0" Grid.ColumnSpan="2">
+                   
+                        <Separator.Background >
+                            <ImageBrush ImageSource="pack://application:,,,/EMS;component/Resource/Image/SepBac.png"/>
+                        </Separator.Background>
+                   
+                </Separator>
+                <Grid Grid.Column="1" Grid.Row="0">
+                    <Border Background="{Binding AlarmColorBCMU}" CornerRadius="3" Margin="25,2">
+                        <TextBlock  Text="告警状态"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17" Foreground="White">
+                            <TextBlock.ToolTip>
+                                <ToolTip Height="auto" Width="auto" Background="White" Style="{StaticResource EmptyTooltipStyle}">
+                                    <StackPanel>
+                                        <ListBox ItemsSource="{Binding AlarmStateBCMU}">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}" FontSize="10"></TextBlock>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                    </StackPanel>
+                                </ToolTip>
+                            </TextBlock.ToolTip>
+                    </TextBlock>
+                    </Border>
+                    
+
+
+                </Grid>
+
+                <!--<TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="15">
+                    <Run Text="剩余电量："/>
+                    <Run Text="{Binding TotalSOC, StringFormat={}{0:F1}%}"/>
+                </TextBlock>-->
+                <Separator Grid.Row="5" Grid.Column="0" BorderThickness="0" Margin="5 0 5 0" Grid.ColumnSpan="2">
+                    <Separator.Background >
+                        <ImageBrush ImageSource="pack://application:,,,/EMS;component/Resource/Image/SepBac.png"/>
+                    </Separator.Background>
+                </Separator>
+
+                <Grid Grid.Column="1" Grid.Row="2">
+                    <Border Background="{Binding ProtectColorBCMU}" CornerRadius="3" Margin="25,2">
+                        <TextBlock Text="保护状态"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17"  Foreground="White">
+                            <TextBlock.ToolTip>
+                                <ToolTip Height="auto" Width="auto" Background="White" Style="{StaticResource EmptyTooltipStyle}">
+                                    <StackPanel>
+                                        <ListBox ItemsSource="{Binding ProtectStateBCMU}">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}" FontSize="10"></TextBlock>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                    </StackPanel>
+                                </ToolTip>
+                            </TextBlock.ToolTip>
+                      
+                    </TextBlock>
+                    </Border>
+                    
+                </Grid>
+
+                <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="White" Margin="5,0,0,0">
+                    <Run Text="健康程度:"/>
+                    <Run Text="{Binding TotalSOH, StringFormat={}{0:F1}}"/>
+                    <Run Text="%" FontSize="10"/>
+                </TextBlock>
+
+                <Grid Grid.Column="1" Grid.Row="4">
+                    
+                    <Border Background="{Binding FaultyColorBCMU}" CornerRadius="3" Margin="25,2" >
+                        <TextBlock  Text="故障状态" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17"  Name="FalutyState" Foreground="White">
+                            <TextBlock.ToolTip>
+                                <ToolTip Height="auto" Width="auto" Background="White" Style="{StaticResource EmptyTooltipStyle}">
+
+                                    <ToolTip.Content>
+                                        <ListBox  Name="ListBox1"  ItemsSource="{Binding FaultyStateBCMU}">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}" FontSize="10"></TextBlock>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                    </ToolTip.Content>
+                                </ToolTip>
+                            </TextBlock.ToolTip>
+                    </TextBlock>
+                    </Border>
+                   
+                </Grid>
+                <Separator Grid.Row="5" Grid.Column="0" BorderThickness="0" Margin="5 0 5 0" Grid.ColumnSpan="2">
+                    <Separator.Background >
+                        <ImageBrush ImageSource="pack://application:,,,/EMS;component/Resource/Image/SepBac.png"/>
+                    </Separator.Background>
+                </Separator>
+                <Grid Grid.Column="0" Grid.Row="6">
+                    <Border Background="#D1D1D1" CornerRadius="2" Margin="12,4,12,4">
+                        <TextBlock Text="充电信息" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="10">
+                            <TextBlock.ToolTip>
+                                <ToolTip Height="auto" Width="auto" >
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding VolContainerTemperature1,StringFormat=T1:{0:F1}℃}"></TextBlock>
+                                        <TextBlock Text="{Binding VolContainerTemperature2, StringFormat=T2:{0:F1}℃}"/>
+                                        <TextBlock Text="{Binding VolContainerTemperature3, StringFormat=T3:{0:F1}℃}"/>
+                                        <TextBlock Text="{Binding VolContainerTemperature4, StringFormat=T4:{0:F1}℃}"/>
+
+                                    </StackPanel>
+                                </ToolTip>
+                            </TextBlock.ToolTip>
+                         </TextBlock>
+                    </Border>
+                </Grid>
+                
+    <Grid Grid.Column="0" Grid.Row="6">
+        <Border Background="#D1D1D1" CornerRadius="2" Margin="12,4,12,4">
+            <TextBlock Text="充电信息" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">
+                <TextBlock.ToolTip>
+                    <ToolTip Height="auto" Width="auto" >
+                         <StackPanel>
+                                        <TextBlock >
+                                            <Run Text="最大充电功率"/>
+                                            <Run Text="{Binding BatMaxChgPower,StringFormat={}{0:F1}kwh}"/>
+                                        </TextBlock> 
+                                        <TextBlock>
+                                            <Run  Text="累计充电量"/>
+                                            <Run Text="{Binding TotalChgCoulomb,StringFormat={}{0:F1}kwh }"/>
+                                        </TextBlock>
+                                        <TextBlock>
+                                            <Run Text="单次充电量"/>
+                                            <Run Text="{Binding OneChgCoulomb,StringFormat={}{0:F1}kwh}"/>
+                                        </TextBlock>
+                             
+                          </StackPanel>
+                    </ToolTip>
+                  </TextBlock.ToolTip>
+              </TextBlock>
+         </Border>
+     </Grid>
+                <Separator Grid.Row="7" Grid.Column="0" BorderThickness="0" Margin="5 0 5 0" Grid.ColumnSpan="2">
+                    <Separator.Background >
+                        <ImageBrush ImageSource="pack://application:,,,/EMS;component/Resource/Image/SepBac.png"/>
+                    </Separator.Background>
+                </Separator>
+
+
+                <Grid  Grid.Column="0" Grid.Row="8">
+                    <Border Background="#D1D1D1" CornerRadius="2" Margin="12,4,12,4">
+                        <TextBlock Text="高压盒温度" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">
+                            <TextBlock.ToolTip>
+                                <ToolTip Height="auto" Width="auto" >
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding VolContainerTemperature1,StringFormat=T1:{0:F1}℃}"></TextBlock>
+                                        <TextBlock Text="{Binding VolContainerTemperature2, StringFormat=T2:{0:F1}℃}"/>
+                                        <TextBlock Text="{Binding VolContainerTemperature3, StringFormat=T3:{0:F1}℃}"/>
+                                        <TextBlock Text="{Binding VolContainerTemperature4, StringFormat=T4:{0:F1}℃}"/>
+
+                                    </StackPanel>
+                                </ToolTip>
+                            </TextBlock.ToolTip>
+        </TextBlock>
+                    </Border>
+                </Grid>
+
+                <Grid  Grid.Column="1" Grid.Row="6">
+                    <Border Background="#D1D1D1" CornerRadius="2" Margin="12,4,12,4">
+                        <TextBlock Text="放电信息" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">
+                            <TextBlock.ToolTip>
+                                <ToolTip Height="auto" Width="auto" >
+                                    <StackPanel>
+                                        <TextBlock >
+                                            <Run Text="最大放电功率"/>
+                                            <Run Text="{Binding BatMaxDischgPower,StringFormat={}{0:F1}kwh}"/>
+                                        </TextBlock>
+                                        <TextBlock>
+                                             <Run  Text="累计放电量"/>
+                                             <Run Text="{Binding TotalDischgCoulomb,StringFormat={}{0:F1}kwh }"/>
+                                        </TextBlock>
+                                        <TextBlock>
+                                                <Run Text="单次放电量"/>
+                                                <Run Text="{Binding OneDischgCoulomb,StringFormat={}{0:F1}kwh}"/>
+                                        </TextBlock>
+
+                                    </StackPanel>
+                                </ToolTip>
+                            </TextBlock.ToolTip>
+                        </TextBlock>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Column="1" Grid.Row="8">
+                    <Border Background="#D1D1D1" CornerRadius="2" Margin="12,4,12,4">
+                        <TextBlock Text="绝缘电阻" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">
+                            <TextBlock.ToolTip>
+                                <ToolTip Height="auto" Width="auto" >
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding IResistanceRP, StringFormat=RP:{0}Ω}"/>
+                                        <TextBlock Text="{Binding IResistanceRN, StringFormat=RN:{0}Ω}"/>
+                                    </StackPanel>
+                                </ToolTip>
+                            </TextBlock.ToolTip>
+                        </TextBlock>
+
+                    </Border>
+                </Grid>
+
+
+                <Separator Grid.Row="9" Grid.Column="0" BorderThickness="0" Margin="5 0 5 0" Grid.ColumnSpan="2">
+                    <Separator.Background >
+                        <ImageBrush ImageSource="pack://application:,,,/EMS;component/Resource/Image/SepBac.png"/>
+                    </Separator.Background>
+                </Separator>
+
+
+
+
+                <Grid Grid.Row="10" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <!--<RadioButton IsChecked="{Binding ChargeState}" Grid.Column="0" Content="充电" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignChoiceChipRadioButton}"></RadioButton>
+                    <RadioButton IsChecked="{Binding DischargeState}" Grid.Column="1" Content="放电" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignChoiceChipRadioButton}"></RadioButton>
+                    <RadioButton IsChecked="{Binding StewingState}" Grid.Column="2" Content="静置" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignChoiceChipRadioButton}"></RadioButton>
+                    <RadioButton IsChecked="{Binding OffNetState}" Grid.Column="3" Content="离网" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignChoiceChipRadioButton}"></RadioButton>-->
+                    <Border Background="{Binding ChargeStateBCMU}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="2" Margin="5,3,5,3" >
+                        <TextBlock Text="充电"   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="White"/>
+                    </Border>
+                    <Border Background="{Binding DisChargeStateBCMU}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="2" Margin="5,3,5,3" Grid.Column="1">
+                        <TextBlock Text="放电"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="White"/>
+                    </Border>
+                    <Border Background="{Binding StandStateBCMU}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="2" Margin="5,3,5,3" Grid.Column="2">
+                        <TextBlock Text="静置" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="White"/>
+                    </Border>
+                    <Border Background="{Binding OffNetStateBCMU}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="2" Margin="5,3,5,3" Grid.Column="3">
+                        <TextBlock Text="离网"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="White"/>
+                    </Border>
+                </Grid>
+                
+
+
+                <!--<TextBlock Grid.Row="2" Grid.Column="1" Text="0.0W" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"></TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="1" Text="0.0Wh" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"></TextBlock>-->
+                <!--<Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Grid.Column="0" Margin="4" Source="../Resource/Image/Charge.png"></Image>
+                    <Image Grid.Row="0" Grid.Column="1" Margin="4" Source="../Resource/Image/Discharge.png"></Image>
+                    <Image Grid.Row="1" Grid.Column="0" Margin="5" Source="../Resource/Image/Balanced.png"></Image>
+                    <Image Grid.Row="1" Grid.Column="1" Margin="6" Source="../Resource/Image/Stewing.png"></Image>
+                </Grid>-->
+            </Grid>
+            <Separator Grid.Row="3" Grid.Column="0" BorderThickness="0" Margin="5 0 5 0" Grid.ColumnSpan="2">
+                <Separator.Background >
+                    <ImageBrush ImageSource="pack://application:,,,/EMS;component/Resource/Image/SepBac.png"/>
+                </Separator.Background>
+            </Separator>
+            <Border Grid.Row="4"  CornerRadius="0 0 5 5">
+                <Grid Margin="5 0 5 0">
+                    <Grid.ColumnDefinitions>
+                        
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="12" VerticalAlignment="Center" Foreground="White">
+                        <Run Text="软件版本号:"/>
+                        <Run Text="{Binding VersionSWBCMU}"/>
+                    </TextBlock>
+                    <TextBlock FontSize="12" Grid.Column="1" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" >
+                        <Run Text="电池总数:"/>
+                        <Run Text="{Binding BatteryCount}"/>
+                    </TextBlock>
+                    <TextBlock FontSize="12" Grid.Column="2" VerticalAlignment="Center" Foreground ="White">
+                        <Run Text="DCVoltage:"/>
+                        <Run Text="{Binding DCVoltage}"/>
+                        <Run Text=" V" FontSize="8"/>
+                    </TextBlock>
+
+
+                    <!--<StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <TextBlock Text="{Binding MinTemperature, StringFormat=Min:{0:F1}℃}" FontSize="8" VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="{Binding MinTemperatureIndex, StringFormat=({0})}" FontSize="8" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Orientation="Horizontal">
+                        <TextBlock Text="{Binding MaxTemperature, StringFormat=Max:{0:F1}℃}" FontSize="8" VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="{Binding MaxTemperatureIndex, StringFormat=({0})}" FontSize="8" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>-->
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

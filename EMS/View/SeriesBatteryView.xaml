@@ -1,0 +1,290 @@
+﻿<Window x:Class="EMS.View.SeriesBatteryView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EMS.View"
+        xmlns:trl="clr-namespace:EMS.MyControl"
+        mc:Ignorable="d"
+        Title="{Binding BCMUID,StringFormat=电池簇{0}}" Height="450" Width="700">
+    <Window.Resources>
+        <Style x:Key="EmptyTooltipStyle" TargetType="ToolTip">
+            <Style.Triggers>
+                <Trigger Property="Content" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </Trigger>
+                <Trigger Property="Content" Value="">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        
+    </Window.Resources>
+
+    <Grid Background="#FF313131" x:Name="ViewBody">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="BMUA" Grid.Row="1" Margin="20 15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Width="180" CornerRadius="10,0,0,10" Background="#FFFDFFF0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="BMU" FontSize="15"></TextBlock>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="(A)" FontSize="15"></TextBlock>
+                    </StackPanel>
+                    <Grid Margin="10" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <TextBlock  Text="告警状态" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Background="{Binding AlarmColorBMU}" Name="AlarmStateBMU" Margin="1" >
+                                <TextBlock.ToolTip>
+                                    <ToolTip Height="auto" Width="auto" Background="White" Style="{StaticResource EmptyTooltipStyle}">
+
+                                        <ListBox  Name="ListBox1"  ItemsSource="{Binding AlarmStateBMU}">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}" FontSize="10"></TextBlock>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="11*"/>
+                                <ColumnDefinition Width="36*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock  Text="故障状态" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Background="{Binding FaultyColorBMU}" Name="FalutyStateBMU" Margin="1" Grid.ColumnSpan="2">
+                                <TextBlock.ToolTip>
+                                    <ToolTip Height="auto" Width="auto" Background="White" Style="{StaticResource EmptyTooltipStyle}">
+
+                                        <ListBox  Name="ListBox2"  ItemsSource="{Binding FaultyStateBMU}">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}" FontSize="10"></TextBlock>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </Grid>
+
+
+                        <TextBlock Grid.Row="2" Text="{Binding ChargeChannelStateNumber,StringFormat=充电通道:{0}}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17"></TextBlock>
+                        <TextBlock Grid.Row="3"  VerticalAlignment="Center" HorizontalAlignment="Center" >
+                            <Run Text="充电累计容量:"/>
+                            <Run Text="{Binding ChargeCapacitySum,StringFormat={}{0:F2}}" FontSize="12"/>
+                            <Run Text="AH" FontSize="8"/>
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+            </Border>
+            <Grid Grid.Column="1" x:Name="BMUA_Battery">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="20 15" x:Name="BMUB">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Width="180" CornerRadius="10,0,0,10" Background="#FFFDFFF0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="BMU" FontSize="15"></TextBlock>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="(B)" FontSize="15"></TextBlock>
+                    </StackPanel>
+
+                    <Grid Margin="10" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <TextBlock  Text="告警状态" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Background="{Binding AlarmColorBMU}"  Margin="1">
+                                <TextBlock.ToolTip>
+                                    <ToolTip Height="auto" Width="auto" Background="White" Style="{StaticResource EmptyTooltipStyle}">
+
+                                        <ListBox    ItemsSource="{Binding AlarmStateBMU}">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}" FontSize="10"></TextBlock>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <TextBlock  Text="故障状态" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Background="{Binding FaultyColorBMU}"  Margin="1">
+                                <TextBlock.ToolTip>
+                                    <ToolTip Height="auto" Width="auto" Background="White" Style="{StaticResource EmptyTooltipStyle}">
+
+                                        <ListBox    ItemsSource="{Binding FaultyStateBMU}">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}" FontSize="10"></TextBlock>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </Grid>
+                        <TextBlock Grid.Row="2" Text="{Binding ChargeChannelStateNumber,StringFormat=充电通道:{0}}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17"></TextBlock>
+                        <TextBlock Grid.Row="3"  VerticalAlignment="Center" HorizontalAlignment="Center" >
+                            <Run Text="充电累计容量:"/>
+                            <Run Text="{Binding ChargeCapacitySum,StringFormat={}{0:F2}}" FontSize="12"/>
+                            <Run Text="AH" FontSize="8"/>
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+            </Border>
+            <Grid Grid.Column="1" x:Name="BMUB_Battery">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="20 15" x:Name="BMUC">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Width="180" CornerRadius="10,0,0,10" Background="#FFFDFFF0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="BMU" FontSize="15"></TextBlock>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="(C)" FontSize="15"></TextBlock>
+                    </StackPanel>
+                    <Grid Margin="6" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <TextBlock  Text="告警状态" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Background="{Binding AlarmColorBMU}"  Margin="1">
+                                <TextBlock.ToolTip>
+                                    <ToolTip Height="auto" Width="auto" Background="White" Style="{StaticResource EmptyTooltipStyle}">
+
+                                        <ListBox    ItemsSource="{Binding AlarmStateBMU}">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}" FontSize="10"></TextBlock>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <TextBlock  Text="故障状态" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Background="{Binding FaultyColorBMU}"  Margin="1">
+                                <TextBlock.ToolTip>
+                                    <ToolTip Height="auto" Width="auto" Background="White" Style="{StaticResource EmptyTooltipStyle}">
+
+                                        <ListBox    ItemsSource="{Binding FaultyStateBMU}">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}" FontSize="10"></TextBlock>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </Grid>
+                        <TextBlock Grid.Row="2" Text="{Binding ChargeChannelStateNumber,StringFormat=充电通道:{0}}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17"></TextBlock>
+
+                        <TextBlock Grid.Row="3"  VerticalAlignment="Center" HorizontalAlignment="Center" >
+                            <Run Text="充电累计容量:"/>
+                            <Run Text="{Binding ChargeCapacitySum,StringFormat={}{0:F2}}" FontSize="12"/>
+                            <Run Text="AH" FontSize="8"/>
+                        </TextBlock>
+
+
+                    </Grid>
+                </Grid>
+            </Border>
+            <Grid Grid.Column="1" x:Name="BMUC_Battery">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
