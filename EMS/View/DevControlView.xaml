@@ -74,7 +74,7 @@
             <RowDefinition Height="100"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <ListBox x:Name="BCMUInfo"  ScrollViewer.CanContentScroll="False" >
@@ -260,5 +260,6 @@
                 </StackPanel>
             </Grid>
         </GroupBox>
+        
     </Grid>
 </Page>

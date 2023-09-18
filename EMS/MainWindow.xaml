@@ -149,6 +149,9 @@
                 <RadioButton   Style="{StaticResource RadioButtonStyle}" x:Name="ValueSettingRaBtn" Checked="RadioButton_Checked">
                     <TextBlock Text="保护参数"  />
                 </RadioButton>
+                <RadioButton   Style="{StaticResource RadioButtonStyle}" x:Name="SimulationSettingRaBtn" Checked="RadioButton_Checked">
+                    <TextBlock Text="仿真参数"  />
+                </RadioButton>
             </StackPanel>
             
 

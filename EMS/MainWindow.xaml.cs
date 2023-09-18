@@ -25,6 +25,7 @@ namespace EMS
         DataAnalysis_OptimizeView dataAnalysis_Optimize;
         DevControlView devControlView;
         ParameterSettingView parameterSettingView;
+        SimulationSettingView simulationSettingView;
         public MainWindow()
         {
             InitializeComponent();
@@ -142,6 +143,16 @@ namespace EMS
                     }
                     parameterSettingView.SyncContent(viewmodel.DisplayContent.OnlineBatteryTotalList.ToList(), viewmodel.DisplayContent.ClientList);
                     Mainbody.Content = new Frame() { Content = parameterSettingView };
+                    break;
+
+                case "SimulationSettingRaBtn":
+                    if(simulationSettingView ==null)
+                    {
+                        simulationSettingView = new SimulationSettingView();
+                        
+                    }
+                    simulationSettingView.SyncContent(viewmodel.DisplayContent.OnlineBatteryTotalList.ToList(), viewmodel.DisplayContent.ClientList);
+                    Mainbody.Content = new Frame() { Content = simulationSettingView };
                     break;
                 default:
                     break;

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:EMS.View"
         mc:Ignorable="d" d:DesignHeight="650" d:DesignWidth="1000"
         Title="ParameterSetting" >
+    
     <Page.Resources>
         <Style TargetType="GroupBox" x:Name="Style1">
             <Setter Property="Margin" Value="0,5"/>
@@ -18,7 +19,7 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <!--显示Content内容-->
-                            <Border Grid.Row="0" Margin="20,0" >
+                            <Border Grid.Row="0" Margin="40,10,0,0" >
                                 <ContentPresenter  ContentSource="Header" VerticalAlignment="Center"  />
                             </Border>
                             <Border Grid.Row="0" Grid.RowSpan="2">
@@ -84,18 +85,24 @@
                 <Grid>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                            <TextBlock Text="簇充电过流保护阈值(A):" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
-                            <TextBox  Width="80" VerticalAlignment="Center" Text="{Binding  ClusterCharOverCurrentThresh}"  Style="{StaticResource UnderlineTextBoxStyle}" Foreground="White"></TextBox>
-                            <TextBlock Text="簇充电过流保护恢复阈值(A):" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
-                            <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="80"   Foreground="White" Text="{Binding  ClusterRecoveryCharOverCurrentThresh}" Style="{StaticResource UnderlineTextBoxStyle}" Margin="10,0"></TextBox>
-                            <Button Content="读取信息"   VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="0,15" Command="{Binding ReadClusterThreshInfoCommand}"></Button>
+                            <TextBlock Text="组端电压上限" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                            <TextBlock Text="1级:" VerticalAlignment="Center" Margin="20,0,5,0" FontSize="18"/>
+                            <TextBox VerticalAlignment="Center" Width="80"  Text="" Foreground="White" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
+                            <TextBlock Text="2级:" VerticalAlignment="Center" Margin="20,0,5,0" FontSize="18"/>
+                            <TextBox VerticalAlignment="Center" Width="80"  Text="" Foreground="White" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
+                            <TextBlock Text="3级:" VerticalAlignment="Center" Margin="20,0,5,0" FontSize="18"/>
+                            <TextBox VerticalAlignment="Center" Width="80"  Text="" Foreground="White" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
+                            <Button Content="读取信息"   VerticalAlignment="Center"   HorizontalAlignment="Center" Margin="10,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
                         </StackPanel>
                         <StackPanel  Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
-                            <TextBlock Text="簇放电过流保护阈值(A):" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
-                            <TextBox VerticalAlignment="Center" Width="80"  Text="{Binding ClusterDisCharOverCurrentThresh}" Foreground="White" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
-                            <TextBlock Text="簇放电过流保护恢复阈值(A):" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
-                            <TextBox VerticalAlignment="Center" Width="80" Margin="10,0" Text="{Binding ClusterRecoveryDisCharOverCurrentThresh}" Foreground="White" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
-                            <Button Content="同步信息"       HorizontalAlignment="Center" Margin="0,0,0,15" Command="{Binding SyncClusterThreshInfofCommand}"></Button>
+                            <TextBlock Text="组端电压下限" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                            <TextBlock Text="1级:" VerticalAlignment="Center" Margin="20,0,5,0" FontSize="18"/>
+                            <TextBox VerticalAlignment="Center" Width="80"  Text="" Foreground="White" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
+                            <TextBlock Text="2级:" VerticalAlignment="Center" Margin="20,0,5,0" FontSize="18"/>
+                            <TextBox VerticalAlignment="Center" Width="80"  Text="" Foreground="White" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
+                            <TextBlock Text="3级:" VerticalAlignment="Center" Margin="20,0,5,0" FontSize="18"/>
+                            <TextBox VerticalAlignment="Center" Width="80"  Text="" Foreground="White" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
+                            <Button Content="同步信息"   VerticalAlignment="Center"   HorizontalAlignment="Center" Margin="10,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -108,67 +115,127 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                            <TextBlock Text="单体过压保护阈值(V):" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
+                            <TextBlock Text="单体电压上限(V)" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
+                            <TextBlock Text="1级:" VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
                             <TextBox  Foreground="White" Width="80" VerticalAlignment="Center" Text="{  Binding SingleOverVolThresh}"  Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
-                            <TextBlock Text="单体过压保护恢复阈值(V):"  VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
-                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" Margin="10,0"></TextBox>
+                            <TextBlock Text="2级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="3级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
                             <Button Content="读取信息"   VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="10,5" Command="{Binding ReadSingleVolThreshInfoCommand}"></Button>
                         </StackPanel>
                         <StackPanel  Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
-                            <TextBlock Text="单体低压保护阈值(V):" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
-                            <TextBox VerticalAlignment="Center" Width="80" Foreground="White" Text="{Binding SingleLowVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
-                            <TextBlock Text="单体低压保护恢复阈值(V):" VerticalAlignment="Center" Foreground="White" FontSize="18" Margin="10,10"></TextBlock>
-                            <TextBox VerticalAlignment="Center" Width="80" Margin="10,0" Foreground="White" Text="{Binding SingleRecoveryLowVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
+                            <TextBlock Text="单体电压下限(V)" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
+                            <TextBlock Text="1级:" VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox  Foreground="White" Width="80" VerticalAlignment="Center" Text="{  Binding SingleOverVolThresh}"  Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="2级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="3级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
                             <Button Content="同步信息"   VerticalAlignment="Center"   HorizontalAlignment="Center" Margin="10,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
                         </StackPanel>
                     </StackPanel>
                     <Separator Grid.Row="1" ></Separator>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                            <TextBlock Text="单体高温保护阈值(℃):" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
-                            <TextBox  Width="80" VerticalAlignment="Center" Foreground="White" Text="{  Binding SingleHighTempThresh}"  Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
-                            <TextBlock Text="单体高温保护恢复阈值(℃):" VerticalAlignment="Center" FontSize="18" Margin="10,5"></TextBlock>
-                            <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="80" Foreground="White"  Text="{Binding  SingleRecoveryHighTempThresh}" Style="{StaticResource UnderlineTextBoxStyle}" Margin="10,0"></TextBox>
-                            <Button Content="读取信息"   VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="10,5" Command="{Binding ReadSingleTempThreshInfoCommand}"></Button>
+                        <StackPanel  Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,5">
+                            <TextBlock Text="充电温度上限(℃)" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
+                            <TextBlock Text="1级:" VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox  Foreground="White" Width="80" VerticalAlignment="Center" Text="{  Binding SingleOverVolThresh}"  Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="2级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="3级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            
                         </StackPanel>
-                        <StackPanel  Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
-                            <TextBlock Text="单体低温保护阈值(℃):" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
-                            <TextBox VerticalAlignment="Center" Width="80"  Text="{Binding SingleLowTempThresh}" Foreground="White" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
-                            <TextBlock Text="单体低温保护恢复阈值(℃):" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
-                            <TextBox VerticalAlignment="Center" Width="80" Margin="10,0" Text="{Binding SingleRecoveryLowTempThresh}" Foreground="White" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
-                            <Button Content="同步信息"       HorizontalAlignment="Center" Margin="10,5"  Command="{Binding SyncSingleTempThreshInfoCommand}"></Button>
+                        <StackPanel  Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
+                            <TextBlock Text="充电温度下限(℃)" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
+                            <TextBlock Text="1级:" VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox  Foreground="White" Width="80" VerticalAlignment="Center" Text="{  Binding SingleOverVolThresh}"  Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="2级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="3级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <Button Content="读取信息"   VerticalAlignment="Center"   HorizontalAlignment="Center" Margin="10,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
+                        </StackPanel>
+                        <StackPanel  Orientation="Horizontal"  VerticalAlignment="Center"   HorizontalAlignment="Left" Margin="0,0,0,10">
+                            <TextBlock Text="放电温度上限(℃)" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
+                            <TextBlock Text="1级:" VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox  Foreground="White" Width="80" VerticalAlignment="Center" Text="{  Binding SingleOverVolThresh}"  Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="2级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="3级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <Button Content="同步信息"   VerticalAlignment="Center"   HorizontalAlignment="Center" Margin="10,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
+                        </StackPanel>
+                        
+                    </StackPanel>
+                    <Separator Grid.Row="3" ></Separator>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4">
+                        
+                        <StackPanel  Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
+                            <TextBlock Text="充电电流(A)" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
+                            <TextBlock Text="1级:" VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox  Foreground="White" Width="80" VerticalAlignment="Center" Text="{  Binding SingleOverVolThresh}"  Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="2级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="3级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <Button Content="读取信息"   VerticalAlignment="Center"   HorizontalAlignment="Center" Margin="10,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
+                        </StackPanel>
+                        <StackPanel  Orientation="Horizontal"  VerticalAlignment="Center"   HorizontalAlignment="Left" Margin="0,0,0,10">
+                            <TextBlock Text="放电电流(A)" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
+                            <TextBlock Text="1级:" VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox  Foreground="White" Width="80" VerticalAlignment="Center" Text="{  Binding SingleOverVolThresh}"  Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="2级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="3级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <Button Content="同步信息"   VerticalAlignment="Center"   HorizontalAlignment="Center" Margin="10,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
                         </StackPanel>
                     </StackPanel>
+                    <Separator Grid.Row="5" ></Separator>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6">
 
+                        <StackPanel  Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
+                            <TextBlock Text="单体压差(V)" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
+                            <TextBlock Text="1级:" VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox  Foreground="White" Width="80" VerticalAlignment="Center" Text="{  Binding SingleOverVolThresh}"  Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="2级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="3级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <Button Content="读取信息"   VerticalAlignment="Center"   HorizontalAlignment="Center" Margin="10,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
+                        </StackPanel>
+                        <StackPanel  Orientation="Horizontal"  VerticalAlignment="Center"   HorizontalAlignment="Left" >
+                            <TextBlock Text="SOC下限(%)" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
+                            <TextBlock Text="1级:" VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox  Foreground="White" Width="80" VerticalAlignment="Center" Text="{  Binding SingleOverVolThresh}"  Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="2级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <TextBlock Text="3级:"  VerticalAlignment="Center" FontSize="18" Margin="15,0,5,0"></TextBlock>
+                            <TextBox VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="80"   Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <Button Content="同步信息"   VerticalAlignment="Center"   HorizontalAlignment="Center" Margin="10,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
+                        </StackPanel>
+                        <StackPanel  Orientation="Horizontal"  VerticalAlignment="Center"   HorizontalAlignment="Left" Margin="0,0,0,20">
+                            <TextBlock Text="绝缘电阻下限1级" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
+                            <TextBox  Foreground="White" Width="80" VerticalAlignment="Center" Text="{  Binding SingleOverVolThresh}"  Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
+                            <Button Content="读取信息"   VerticalAlignment="Center"   HorizontalAlignment="Center" Margin="10,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
+                            <Button Content="同步信息"   VerticalAlignment="Center"   HorizontalAlignment="Center" Margin="10,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
+                        </StackPanel>
+                    </StackPanel>
                 </Grid>
             </GroupBox>
         </Border>
 
-        <Border Grid.Row="3" Margin="0,10">
-            <GroupBox Header="其他" Foreground="White" FontSize="20" Margin="10,0">
-                <Grid>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                            <TextBlock Text="绝缘低报警阈值(kΩ):" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
-                            <TextBox  Width="80" VerticalAlignment="Center" Text="{  Binding SingleOverVolThresh}" Foreground="White" Style="{StaticResource UnderlineTextBoxStyle}" ></TextBox>
-                            <TextBlock Text="高压箱高温告警阈值(℃):" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
-                            <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="80"  Foreground="White" Text="{Binding  SingleRecoveryOverVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}" Margin="10,0"></TextBox>
-                            <Button Content="读取信息"   VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="10,5" Command="{Binding ReadSingleVolThreshInfoCommand}"></Button>
-                        </StackPanel>
-                        <StackPanel  Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
-                            <TextBlock Text="SOC一级告警阈值(%):" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
-                            <TextBox VerticalAlignment="Center" Width="80" Foreground="White" Text="{Binding SingleLowVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
-                            <TextBlock Text="SOC二级告警阈值(%):" VerticalAlignment="Center" FontSize="18" Margin="10,0"></TextBlock>
-                            <TextBox VerticalAlignment="Center" Width="80" Margin="10,0" Foreground="White" Text="{Binding SingleRecoveryLowVolThresh}" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
-                            <Button Content="同步信息"   VerticalAlignment="Center"    HorizontalAlignment="Center" Margin="10,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
-                        </StackPanel>
-                    </StackPanel>
-                </Grid>
-            </GroupBox>
-        </Border>
+        
+        
 
     </Grid>
 </Page>

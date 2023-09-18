@@ -1,4 +1,4 @@
-﻿E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\GeneratedInternalTypeHelper.g.cs
+﻿
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\App.xaml;;
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\MainWindow.xaml;;
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\MyControl\Battery.xaml;;
@@ -18,4 +18,5 @@ FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\DevTest_CollectView
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\ParameterSettingView.xaml;;
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\SeriesBatteryView.xaml;;
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\SystemSetView.xaml;;
+FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\SimulationSettingView.xaml;;
 

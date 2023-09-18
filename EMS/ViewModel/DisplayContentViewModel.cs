@@ -258,12 +258,12 @@ namespace EMS.ViewModel
             {
                 //** 注：应该尽可能的少次多量读取数据，多次读取数据会因为读取次数过于频繁导致丢包
 
-                byte[] BCMUData = new byte[118];
-                Array.Copy(client.AddReadRequest(11000,59), 0, BCMUData, 0, 118);
+                //byte[] BCMUData = new byte[118];
+                //Array.Copy(client.AddReadRequest(11000,59), 0, BCMUData, 0, 118);
                 //byte[] BCMUData = new byte[90];
                 //Array.Copy(client.AddReadRequest(11000, 45), 0, BCMUData, 0, 90);
-                //byte[] BCMUData = new byte[70];
-                //Array.Copy(client.AddReadRequest(11000, 35), 0, BCMUData, 0, 70);
+                byte[] BCMUData = new byte[70];
+                Array.Copy(client.AddReadRequest(11000, 35), 0, BCMUData, 0, 70);
                 byte[] BMUData = new byte[744];
                 //byte[] BMUIDData = new byte[48];
                 //Array.Copy(client.AddReadRequest(11045, 24), 0, BMUIDData, 0, 48); ;
@@ -313,10 +313,10 @@ namespace EMS.ViewModel
                 total.AlarmStateBCMUFlag = BitConverter.ToUInt16(BCMUData, 64);
                 total.ProtectStateBCMUFlag = BitConverter.ToUInt16(BCMUData, 66);
                 total.FaultyStateBCMUFlag = BitConverter.ToUInt16(BCMUData, 68);
-                total.BatMaxChgPower = BitConverter.ToUInt16(BCMUData, 72) * 0.01;
-                total.BatMaxDischgPower = BitConverter.ToUInt16(BCMUData, 74) * 0.01;
-                total.OneChgCoulomb = BitConverter.ToUInt16(BCMUData, 76) * 0.01;
-                total.OneDischgCoulomb = BitConverter.ToUInt16(BCMUData, 78) * 0.01;
+                //total.BatMaxChgPower = BitConverter.ToUInt16(BCMUData, 72) * 0.01;
+                //total.BatMaxDischgPower = BitConverter.ToUInt16(BCMUData, 74) * 0.01;
+                //total.OneChgCoulomb = BitConverter.ToUInt16(BCMUData, 76) * 0.01;
+                //total.OneDischgCoulomb = BitConverter.ToUInt16(BCMUData, 78) * 0.01;
                 //total.TotalChgCoulomb = BitConverter.ToUInt16(BCMUData, 80) * 0.01;
                 //total.TotalDischgCoulomb = BitConverter.ToUInt16(BCMUData, 82) * 0.01;
                 //total.RestCoulomb = BitConverter.ToUInt16(BCMUData, 84) * 0.01;

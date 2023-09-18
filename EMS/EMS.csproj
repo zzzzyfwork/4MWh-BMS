@@ -276,6 +276,9 @@
     <Compile Include="View\SeriesBatteryView.xaml.cs">
       <DependentUpon>SeriesBatteryView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SimulationSettingView.xaml.cs">
+      <DependentUpon>SimulationSettingView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SystemSetView.xaml.cs">
       <DependentUpon>SystemSetView.xaml</DependentUpon>
     </Compile>
@@ -350,6 +353,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SeriesBatteryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SimulationSettingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

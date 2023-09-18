@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Work\9-7\EMS-ZYF_Modify\EMS\obj\Debug\
+E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\
 EMS
 none
 false
 DEBUG;TRACE
-E:\Work\9-7\EMS-ZYF_Modify\EMS\App.xaml
-18893099454
+E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\App.xaml
+19-7189107
 271090325904
-52835801683
-45-1145871698
-MainWindow.xaml;MyControl\Battery.xaml;MyControl\DataControl.xaml;MyControl\DateInput.xaml;MyControl\DevControl.xaml;MyControl\IDInput.xaml;MyControl\IPInput.xaml;View\AboutView.xaml;View\AddDevArrayView.xaml;View\AddDevView.xaml;View\DataAnalysisView.xaml;View\DataAnalysis_OptimizeView.xaml;View\DevAlarm_ErrorView.xaml;View\DevControlView.xaml;View\DevTest_CollectView.xaml;View\ParameterSettingView.xaml;View\SeriesBatteryView.xaml;View\SystemSetView.xaml;
+531920140656
+45-1082204358
+MainWindow.xaml;MyControl\Battery.xaml;MyControl\DataControl.xaml;MyControl\DateInput.xaml;MyControl\DevControl.xaml;MyControl\IDInput.xaml;MyControl\IPInput.xaml;View\AboutView.xaml;View\AddDevArrayView.xaml;View\AddDevView.xaml;View\DataAnalysisView.xaml;View\DataAnalysis_OptimizeView.xaml;View\DevAlarm_ErrorView.xaml;View\DevControlView.xaml;View\DevTest_CollectView.xaml;View\ParameterSettingView.xaml;View\SeriesBatteryView.xaml;View\SimulationSettingView.xaml;View\SystemSetView.xaml;
 
 True
 
