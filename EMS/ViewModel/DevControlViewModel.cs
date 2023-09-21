@@ -16,7 +16,7 @@ namespace EMS.Model
 {
     public class DevControlViewModel : ViewModelBase
     {
-        
+
 
         private int _address1;
         /// <summary>
@@ -224,8 +224,8 @@ namespace EMS.Model
             set { SetProperty(ref _bMUid, value); }
         }
 
-       
-   
+
+
 
         private List<string> _channels;
         /// <summary>
@@ -243,7 +243,7 @@ namespace EMS.Model
             }
         }
 
-        
+
 
         private string _selectedChannel;
         /// <summary>
@@ -262,7 +262,7 @@ namespace EMS.Model
         }
 
 
-        
+
         /// <summary>
         /// 被选择的BMU
         /// </summary>
@@ -279,9 +279,9 @@ namespace EMS.Model
             }
         }
 
-       
 
-       
+
+
         /// <summary>
         /// 数据采集模式
         /// </summary>
@@ -299,7 +299,7 @@ namespace EMS.Model
         private List<string> _dataCollectionMode;
         public List<string> DataCollectionMode
         {
-            get=> _dataCollectionMode;
+            get => _dataCollectionMode;
             set
             {
                 SetProperty(ref _dataCollectionMode, value);
@@ -311,7 +311,7 @@ namespace EMS.Model
         private string _selectedBalanceMode;
         public string SelectedBalanceMode
         {
-            get=> _selectedBalanceMode;
+            get => _selectedBalanceMode;
             set
             {
                 SetProperty(ref _selectedBalanceMode, value);
@@ -321,14 +321,35 @@ namespace EMS.Model
         private List<string> _balanceMode;
         public List<string> BalanceMode
         {
-            get=> _balanceMode;
+            get => _balanceMode;
             set
             {
                 SetProperty(ref _balanceMode, value);
             }
         }
+
+        private string _bCMUSName;
+        public string BCMUSName
+        {
+            get => _bCMUSName;
+            set
+            {
+                SetProperty(ref _bCMUSName, value);
+            }
+        }
+
+        private string _bCMUName;
+        public string BCMUName
+        {
+            get => _bCMUName;
+            set
+            {
+                SetProperty(ref _bCMUName, value);
+            }
+        }
+
         public RelayCommand SelectDataCollectionModeCommand { get; set; }
-        
+
         public RelayCommand ReadNetInfoCommand { get; set; }
         public RelayCommand SyncNetInfoCommand { get; set; }
         public RelayCommand OpenChargeChannelCommand { get; set; }
@@ -337,9 +358,11 @@ namespace EMS.Model
         public RelayCommand InNetCommand { get; set; }
         public RelayCommand FwUpdateCommand { get; set; }
         private ModbusClient ModbusClient;
+        public RelayCommand ReadBCMUIDINFOCommand { get; set; }
+        public RelayCommand SyncBCMUIDINFOCommand { get; set; }
         public DevControlViewModel(ModbusClient client)
         {
-          
+
             ReadNetInfoCommand = new RelayCommand(ReadNetInfo);
             SyncNetInfoCommand = new RelayCommand(SyncNetInfo);
             OpenChargeChannelCommand = new RelayCommand(OpenChargeChannel);
@@ -347,10 +370,12 @@ namespace EMS.Model
             SelectBalancedModeCommand = new RelayCommand(SelectBalancedMode);
             FwUpdateCommand = new RelayCommand(FwUpdate);
             InNetCommand = new RelayCommand(InNet);
+            ReadBCMUIDINFOCommand = new RelayCommand(ReadBCMUIDINFO);
+            SyncBCMUIDINFOCommand = new RelayCommand(SyncBCMUIDINFO);
             Channels = new List<string>();
-            SelectDataCollectionModeCommand = new RelayCommand(SelectDataCollectionMode);
-
-           for (int i = 1; i <= 14; i++)
+            SelectDataCollectionModeCommand = new RelayCommand(SelectDataCollectionMode);   
+            
+            for (int i = 1; i <= 14; i++)
             {
                 Channels.Add(i.ToString());
             }
@@ -383,13 +408,13 @@ namespace EMS.Model
 
         private void SelectBalancedMode()
         {
-            
+
             if (SelectedBalanceMode == "自动模式")
             {
                 ModbusClient.WriteFunc(40102, 0xBC11);
-                
+
             }
-            else if(SelectedBalanceMode =="远程模式")
+            else if (SelectedBalanceMode == "远程模式")
             {
                 ModbusClient.WriteFunc(40102, 0xBC22);
 
@@ -428,10 +453,10 @@ namespace EMS.Model
 
                     }
                     break;
-                    default:
+                default:
                     {
                         MessageBox.Show("请选择需要关闭的BMU");
-                    }break;
+                    } break;
             }
         }
 
@@ -442,35 +467,35 @@ namespace EMS.Model
             {
                 case "1":
                     {
-                        
-                        UInt16 data =(UInt16) (0xAB00 +openchannel);
+
+                        UInt16 data = (UInt16)(0xAB00 + openchannel);
                         ModbusClient.WriteFunc(40100, (ushort)data);
-                    }break;
-            case "2":
+                    } break;
+                case "2":
                     {
                         UInt16 data = (UInt16)(0xAC00 + openchannel);
-                        
+
                         ModbusClient.WriteFunc(40100, (ushort)data);
 
                     }
                     break;
-            case "3":
+                case "3":
                     {
                         UInt16 data = (UInt16)(0xAD00 + openchannel);
-                        
+
                         ModbusClient.WriteFunc(40100, (ushort)data);
 
                     }
                     break;
-                    default :
+                default:
                     {
                         MessageBox.Show("请选择数据");
-                    }break;
+                    } break;
 
             }
 
 
-           
+
         }
 
         private void ReadNetInfo()
@@ -517,14 +542,14 @@ namespace EMS.Model
             ModbusClient.WriteFunc(40104, 0xBBAA);
         }
 
-       private void SelectDataCollectionMode()
+        private void SelectDataCollectionMode()
         {
             if (SelectedDataCollectionMode == "正常模式")
             {
                 //ModbusClient.WriteFunc(40105, 0xAAAA);
 
             }
-            else if (SelectedDataCollectionMode =="仿真模式")
+            else if (SelectedDataCollectionMode == "仿真模式")
             {
                 ModbusClient.WriteFunc(40105, 0xAA55);
             }
@@ -533,6 +558,73 @@ namespace EMS.Model
                 MessageBox.Show("请选择正确模式");
             }
 
+        }
+
+        private void ReadBCMUIDINFO()
+        {
+            byte[] data = ModbusClient.ReadFunc(40307, 16);
+            StringBuilder BCMUNameBuilder = new StringBuilder();
+            for (int i = 0; i < 16; i++)
+            {
+                char BCMUNameChar = Convert.ToChar(data[i]);
+                BCMUNameBuilder.Append(BCMUNameChar);
+            }
+
+            BCMUName = BCMUNameBuilder.ToString().TrimStart('0');
+            StringBuilder BCMUSNameBuilder = new StringBuilder();           
+            for (int i = 16; i < 32; i++)
+            {
+                char BCMUSNameChar = Convert.ToChar(data[i]);
+                BCMUSNameBuilder.Append(BCMUSNameChar);
+   
+            }           
+            BCMUSName = BCMUSNameBuilder.ToString().TrimStart('0');
+        }
+
+        private void SyncBCMUIDINFO()
+        {
+            int indexSN = 0; //BCMU序列号数据序号
+            int indexN = 0;//BCMU别名序号
+            
+            
+            string BCMUFullSName="";//补足16位的BCMU序列号
+            string BCMUFullName = "";//补足16位的BCMU别名
+            if (BCMUSName.Length< 16|| BCMUName.Length<16)
+            {
+                BCMUFullSName = BCMUSName.PadLeft(16, '0');
+                BCMUFullName = BCMUName.PadLeft(16, '0');
+            }
+            else
+            {
+                BCMUFullSName = BCMUSName;
+                BCMUFullName = BCMUName;
+            }
+            //写BCMU序列号
+            for (int i = 0; i < BCMUFullSName.Length; i++)
+            {
+                int asciiCode = (int)BCMUFullSName[i];
+                int asciiCode2;
+                if (i % 2 == 0)
+                {
+                    asciiCode2 = (BCMUFullSName[i + 1]) << 8;                  
+                    int nameof = asciiCode | asciiCode2;
+                    ModbusClient.WriteFunc((ushort)(40315 + indexSN), (ushort)nameof);
+                    indexSN++;
+                }
+            }
+            //写BCMU别名
+            for (int i = 0; i < BCMUFullName.Length; i++)
+            {
+                int asciiCode = (int)BCMUFullName[i];
+                if (i % 2 == 0)
+                {
+                    int asciiCode2 = (BCMUFullName[i + 1]) << 8;
+                    int nameof = asciiCode | asciiCode2;
+                    ModbusClient.WriteFunc((ushort)(40307 + indexN), (ushort)nameof);
+                    indexN++;
+                }
+            }
+ 
         }
 
     }

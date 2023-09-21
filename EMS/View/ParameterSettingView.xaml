@@ -62,7 +62,9 @@
             </Setter>
         </Style>
     </Page.Resources>
-
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <!-- 这里放置您的页面内容 -->
+    
     <Grid Background="Transparent">
 
         <Grid.RowDefinitions>
@@ -238,4 +240,5 @@
         
 
     </Grid>
+    </ScrollViewer>
 </Page>

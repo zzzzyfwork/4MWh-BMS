@@ -41,6 +41,10 @@
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0">
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="BMU" FontSize="15"></TextBlock>
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="(A)" FontSize="15"></TextBlock>
@@ -51,6 +55,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
+                            
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <TextBlock  Text="告警状态" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Background="{Binding AlarmColorBMU}" Name="AlarmStateBMU" Margin="1" >
@@ -99,7 +104,12 @@
                             <Run Text="AH" FontSize="8"/>
                         </TextBlock>
                     </Grid>
+                    <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="20,0,0,5">
+                        <Run Text="ID:"></Run>
+                        <Run Text="{Binding BMUID}"/>
+                    </TextBlock>
                 </Grid>
+               
             </Border>
             <Grid Grid.Column="1" x:Name="BMUA_Battery">
                 <Grid.ColumnDefinitions>
@@ -129,6 +139,10 @@
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0">
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="BMU" FontSize="15"></TextBlock>
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="(B)" FontSize="15"></TextBlock>
@@ -182,6 +196,10 @@
                             <Run Text="AH" FontSize="8"/>
                         </TextBlock>
                     </Grid>
+                    <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="20,0,0,5">
+                        <Run Text="ID:"></Run>
+                        <Run Text="{Binding BMUID}"/>
+                    </TextBlock>
                 </Grid>
             </Border>
             <Grid Grid.Column="1" x:Name="BMUB_Battery">
@@ -212,6 +230,10 @@
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0">
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="BMU" FontSize="15"></TextBlock>
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="(C)" FontSize="15"></TextBlock>
@@ -265,9 +287,11 @@
                             <Run Text="{Binding ChargeCapacitySum,StringFormat={}{0:F2}}" FontSize="12"/>
                             <Run Text="AH" FontSize="8"/>
                         </TextBlock>
-
-
-                    </Grid>
+                   </Grid>
+                    <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="20,0,0,5">
+                        <Run Text="ID:"></Run>
+                        <Run Text="{Binding BMUID}"/>
+                    </TextBlock>
                 </Grid>
             </Border>
             <Grid Grid.Column="1" x:Name="BMUC_Battery">

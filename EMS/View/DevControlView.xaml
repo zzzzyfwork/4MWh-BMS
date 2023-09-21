@@ -68,7 +68,9 @@
             </Setter>
         </Style>
     </Page.Resources>
-
+    <ScrollViewer>
+        
+    
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -153,7 +155,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <StackPanel Margin="12,-10,0,12" Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Margin="12,-10,0,12" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0">
                     <TextBlock  Text="网络IP地址:" VerticalAlignment="Center" Margin="0 10" FontSize="18" ></TextBlock>
                     <Grid Background="White" Width="180" Height="30" Margin="10,0">
                         <Grid.ColumnDefinitions>
@@ -217,49 +219,26 @@
                     <Button Content="同步信息" Margin="30 0" Command="{Binding SyncNetInfoCommand}"></Button>
                 </StackPanel>
                 <Separator Grid.Row="2" Margin="2 10"></Separator>
-                <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock  Text="BCMU别名1" VerticalAlignment="Center" Margin="0 10" FontSize="18"></TextBlock>
-                    <TextBox Width="80" Style="{StaticResource UnderlineTextBoxStyle}" Margin="5,10"></TextBox>
-                    <TextBlock  Text="BCMU别名2" VerticalAlignment="Center" Margin="0 10" FontSize="18"></TextBlock>
-                    <TextBox Width="80" Style="{StaticResource UnderlineTextBoxStyle}" Margin="5,10"></TextBox>
-                    <TextBlock  Text="BCMU别名3" VerticalAlignment="Center" Margin="0 10" FontSize="18"></TextBlock>
-                    <TextBox Width="80" Style="{StaticResource UnderlineTextBoxStyle}" Margin="5,10"></TextBox>
-                    <TextBlock  Text="BCMU别名4" VerticalAlignment="Center" Margin="0 10" FontSize="18"></TextBlock>
-                    <TextBox Width="80" Style="{StaticResource UnderlineTextBoxStyle}" Margin="5,10"></TextBox>
-                    <Button Content="读取信息" Margin="30 0"></Button>
-                </StackPanel>
-                <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock  Text="BCMU别名5" VerticalAlignment="Center" Margin="0 10" FontSize="18"></TextBlock>
-                    <TextBox Width="80" Style="{StaticResource UnderlineTextBoxStyle}" Margin="5,10"></TextBox>
-                    <TextBlock  Text="BCMU别名6" VerticalAlignment="Center" Margin="0 10" FontSize="18"></TextBlock>
-                    <TextBox Width="80" Style="{StaticResource UnderlineTextBoxStyle}" Margin="5,10"></TextBox>
-                    <TextBlock  Text="BCMU别名7" VerticalAlignment="Center" Margin="0 10" FontSize="18"></TextBlock>
-                    <TextBox Width="80" Style="{StaticResource UnderlineTextBoxStyle}" Margin="5,10"></TextBox>
-                    <TextBlock  Text="BCMU别名8" VerticalAlignment="Center" Margin="0 10" FontSize="18"></TextBlock>
-                    <TextBox Width="80" Style="{StaticResource UnderlineTextBoxStyle}" Margin="5,10"></TextBox>
-
-                    <Button Content="同步信息" Margin="30 0"></Button>
-                </StackPanel>
-                <Separator Grid.Row="5" Margin="2 6"></Separator>
+                <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                        <TextBlock Text="BCMU别名:" VerticalAlignment="Center" Margin="0 10" FontSize="18"/>
+                        <TextBox Width="200"  Margin="5,10,10,10" Style="{StaticResource MaterialDesignTextBox}" 
+                                Foreground="Black" Background="White" Height="30" PreviewTextInput="TextBox_PreviewTextInput" Text="{Binding BCMUName}"></TextBox>
+                        <TextBlock Text="BCMU序列号:" VerticalAlignment="Center" Margin="0 10" FontSize="18"/>
+                        <TextBox Width="200" Background="White" Style="{StaticResource MaterialDesignTextBox}" 
+                                Foreground="Black" PreviewTextInput="TextBox_PreviewTextInput" Height="30" Margin="5,10,10,5" 
+                                 Text="{Binding BCMUSName}"/>
+                        <Button Content="读取信息" Margin="10 0" Command="{Binding ReadBCMUIDINFOCommand}"></Button>
+                        <Button Content="同步信息" Margin="5 0" Command="{Binding SyncBCMUIDINFOCommand}"></Button>
+                    </StackPanel>
+               
+              
                 
-                <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock  Text="BCMU序列ID1" VerticalAlignment="Center" Margin="0 10" FontSize="18"></TextBlock>
-                    <TextBox Width="80" Style="{StaticResource UnderlineTextBoxStyle}" Margin="5,10"></TextBox>
-                    <TextBlock Text="BCMU序列ID2" VerticalAlignment="Center" Margin="0 10"  FontSize="18"></TextBlock>
-                    <TextBox Width="80" Style="{StaticResource UnderlineTextBoxStyle}" Margin="5,10"></TextBox>
-                   
-                    <Button Content="读取信息" Margin="30,0"></Button>
+               
                     
-                </StackPanel>
-                <StackPanel Grid.Row="7" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,20">
-                    <TextBlock Text="BCMU序列ID3" VerticalAlignment="Center" Margin="0 10"  FontSize="18"></TextBlock>
-                    <TextBox Width="80" Style="{StaticResource UnderlineTextBoxStyle}" Margin="5,10"></TextBox>
-                    <TextBlock Text="BCMU序列ID4" VerticalAlignment="Center" Margin="0 10"  FontSize="18"></TextBlock>
-                    <TextBox Width="80" Style="{StaticResource UnderlineTextBoxStyle}" Margin="5,10"></TextBox>
-                    <Button Content="同步信息" Margin="30,0"></Button>
-                </StackPanel>
+                
             </Grid>
         </GroupBox>
         
     </Grid>
+    </ScrollViewer>
 </Page>

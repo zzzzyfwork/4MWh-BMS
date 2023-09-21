@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:EMS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1000" Width="1500" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="1000" Width="1500" WindowStartupLocation="CenterScreen"  WindowState="Maximized">
     <Window.Resources>
         <ImageBrush x:Key="topImage" ImageSource="pack://application:,,,/EMS;component/Resource/Image/topImage.png"/>
 

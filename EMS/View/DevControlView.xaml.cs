@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -87,6 +88,26 @@ namespace EMS.View
             var item = sender as RadioButton;
             int index = BCMUInfo.Items.IndexOf(item);
             this.DataContext = ViewModels[index];
+        }
+
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string text = textBox.Text;
+            string pattern = @"^[\x00-\x7F]*$";
+            if (textBox.Text.Length ==16)
+            {
+                
+                e.Handled = true;
+                return;
+            }
+            if (!Regex.IsMatch(text, pattern))
+            {
+                MessageBox.Show("请输入正确字符");
+                
+            }
+
+
         }
     }
 }

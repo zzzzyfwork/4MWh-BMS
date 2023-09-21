@@ -17,85 +17,95 @@ namespace EMS.Model
         /// <summary>
         /// BMUID
         /// </summary>
-        private int _bMUID1;
-        public int BMUID1
+        /// 
+        private string _bMUID;
+        public string BMUID
         {
-            get => _bMUID1;
+            get => _bMUID;
             set
             {
-                SetProperty(ref _bMUID1, value);
+                SetProperty(ref _bMUID, value);
             }
         }
+        //private int _bMUID1;
+        //public int BMUID1
+        //{
+        //    get => _bMUID1;
+        //    set
+        //    {
+        //        SetProperty(ref _bMUID1, value);
+        //    }
+        //}
 
-        private int _bMUID2;
-        public int BMUID2
-        {
-            get => _bMUID2;
-            set
-            {
-                SetProperty(ref _bMUID2, value);
-            }
-        }
+        //private int _bMUID2;
+        //public int BMUID2
+        //{
+        //    get => _bMUID2;
+        //    set
+        //    {
+        //        SetProperty(ref _bMUID2, value);
+        //    }
+        //}
 
-        private int _bMUID3;
-        public int BMUID3
-        {
-            get => _bMUID3;
-            set
-            {
-                SetProperty(ref _bMUID3, value);
-            }
-        }
+        //private int _bMUID3;
+        //public int BMUID3
+        //{
+        //    get => _bMUID3;
+        //    set
+        //    {
+        //        SetProperty(ref _bMUID3, value);
+        //    }
+        //}
 
-        private int _bMUID4;
-        public int BMUID4
-        {
-            get => _bMUID4;
-            set
-            {
-                SetProperty(ref _bMUID4, value);
-            }
-        }
+        //private int _bMUID4;
+        //public int BMUID4
+        //{
+        //    get => _bMUID4;
+        //    set
+        //    {
+        //        SetProperty(ref _bMUID4, value);
+        //    }
+        //}
 
-        private int _bMUID5;
-        public int BMUID5
-        {
-            get => _bMUID5;
-            set
-            {
-                SetProperty(ref _bMUID5, value);
-            }
-        }
+        //private int _bMUID5;
+        //public int BMUID5
+        //{
+        //    get => _bMUID5;
+        //    set
+        //    {
+        //        SetProperty(ref _bMUID5, value);
+        //    }
+        //}
 
-        private int _bMUID6;
-        public int BMUID6
-        {
-            get => _bMUID6;
-            set
-            {
-                SetProperty(ref _bMUID6, value);
-            }
-        }
+        //private int _bMUID6;
+        //public int BMUID6
+        //{
+        //    get => _bMUID6;
+        //    set
+        //    {
+        //        SetProperty(ref _bMUID6, value);
+        //    }
+        //}
 
-        private int _bMUID7;
-        public int BMUID7
-        {
-            get => _bMUID7;
-            set
-            {
-                SetProperty(ref _bMUID7, value);
-            }
-        }
+        //private int _bMUID7;
+        //public int BMUID7
+        //{
+        //    get => _bMUID7;
+        //    set
+        //    {
+        //        SetProperty(ref _bMUID7, value);
+        //    }
+        //}
 
-        private int _bMUID8;
-        public int BMUID8
-        {
-            get => _bMUID8;
-            set
-            {
-                SetProperty(ref _bMUID8, value);
-            }
-        }
+        //private int _bMUID8;
+        //public int BMUID8
+        //{
+        //    get => _bMUID8;
+        //    set
+        //    {
+        //        SetProperty(ref _bMUID8, value);
+        //    }
+        //}
         /// <summary>
         /// BMU告警
         /// </summary>
