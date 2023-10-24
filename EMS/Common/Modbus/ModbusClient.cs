@@ -167,7 +167,7 @@ namespace EMS.Common.Modbus.ModbusTCP
             {
                 ModbusRequest request = new ModbusRequest();
                 request.RequestType = RequestTypes.Read;
-                request.SlaveAddress = 0;
+                request.SlaveAddress = 1;
                 request.StartAddress = address;
                 request.NmbOfPoints = num;
                 RequestQueue.Enqueue(request);

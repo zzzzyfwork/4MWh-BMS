@@ -245,12 +245,10 @@
     <Compile Include="ViewModel\DisplayContentViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ParameterSettingViewModel.cs" />
+    <Compile Include="ViewModel\PCSSettingViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\AddDevArrayView.xaml.cs">
-      <DependentUpon>AddDevArrayView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AddDevView.xaml.cs">
       <DependentUpon>AddDevView.xaml</DependentUpon>
@@ -273,11 +271,11 @@
     <Compile Include="View\ParameterSettingView.xaml.cs">
       <DependentUpon>ParameterSettingView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PCSSettingView.xaml.cs">
+      <DependentUpon>PCSSettingView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SeriesBatteryView.xaml.cs">
       <DependentUpon>SeriesBatteryView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SimulationSettingView.xaml.cs">
-      <DependentUpon>SimulationSettingView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SystemSetView.xaml.cs">
       <DependentUpon>SystemSetView.xaml</DependentUpon>
@@ -316,11 +314,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AboutView.xaml">
+    <Page Include="Style\Button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddDevArrayView.xaml">
+    <Page Include="View\AboutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -352,11 +350,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SeriesBatteryView.xaml">
+    <Page Include="View\PCSSettingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SimulationSettingView.xaml">
+    <Page Include="View\SeriesBatteryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -397,6 +395,9 @@
     <Content Include="Resource\Image\Battery75.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resource\Fonts\digital_display.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resource\Image\topback.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -418,6 +419,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resource\Image\Error.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Image\PCSMachine.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resource\Image\InNet.png">

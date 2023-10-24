@@ -78,6 +78,8 @@ namespace EMS.ViewModel
         }
 
 
+
+
         public RelayCommand OpenSystemSetViewCommand { set; get; }
         public RelayCommand OpenDataAnalysisViewCommand { set; get; }
         public RelayCommand OpenAboutCommand { set; get; }

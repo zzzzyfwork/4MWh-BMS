@@ -20,6 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace EMS.View
 {
@@ -32,6 +33,18 @@ namespace EMS.View
         {
             InitializeComponent();
             seriesBatteryViews = new List<SeriesBatteryView>();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1); // 设置定时器每秒触发一次
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            DateTime now = DateTime.Now;
+
+            DateTimeText.Text = now.ToString("yyyy年MM月dd日");
+            TimeTime.Text= now.ToString("HH:mm:ss");
+            WeekTime.Text= now.ToString("dddd");
         }
 
         public void Test_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -58,8 +71,8 @@ namespace EMS.View
             //control.DataContext = model;
             control.Margin = new Thickness(30, 10, 30, 10);
             int index = MainBody.Children.Count;
-            Grid.SetColumn(control, index / 3);
-            Grid.SetRow(control, index % 3);
+            Grid.SetColumn(control, index % 3);
+            Grid.SetRow(control, index /3);
             MainBody.Children.Add(control);
             SeriesBatteryView view = new SeriesBatteryView((BatteryTotalBase)control.DataContext);
             seriesBatteryViews.Add(view);

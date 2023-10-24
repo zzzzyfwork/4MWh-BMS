@@ -18,6 +18,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/image/charge.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/image/discharge.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/image/error.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/image/pcsmachine.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/image/innet.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/image/menu.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resource/image/menu1.png")]

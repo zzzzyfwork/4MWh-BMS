@@ -81,6 +81,7 @@ namespace EMS.Common.Mqtt
         {
             Console.WriteLine($"ApplicationMessageReceivedAsync：客户端ID=【{arg.ClientId}】接收到消息。 Topic主题=【{arg.ApplicationMessage.Topic}】 消息=【{Encoding.UTF8.GetString(arg.ApplicationMessage.Payload)}】 qos等级=【{arg.ApplicationMessage.QualityOfServiceLevel}】");
             return Task.CompletedTask;
+          
         }
 
         /// <summary>

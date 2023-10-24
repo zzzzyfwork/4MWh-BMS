@@ -7,18 +7,81 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="1200"
       Title="DevTest_CollectView">
-
-    <Grid x:Name="MainBody" MouseUp="MainBody_MouseUp">
-
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0">
+            
+            <Border CornerRadius="6"   Margin="0,5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#1116a1ff" Offset="0"/>
+                        <GradientStop Color="Transparent" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <Grid VerticalAlignment="Top" Margin="0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2.2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="0,0,0,1" VerticalAlignment="Center">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="Transparent" Offset="0"/>
+                            <GradientStop Color="#AA16a1ff" Offset="0.5"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                </Border>
+                <Border BorderBrush="#6616a1ff" BorderThickness="2,0" Height="4" VerticalAlignment="Center" Grid.Column="1" Margin="2,0"/>
+                <Border BorderBrush="#6616a1ff" BorderThickness="2,0" Height="8" VerticalAlignment="Center" Grid.Column="1" Margin="6,0"/>
+                <Border BorderBrush="#6616a1ff" BorderThickness="2,0" Height="12" VerticalAlignment="Center" Grid.Column="1" Margin="12,0"/>
+                <Border BorderThickness="0,0,0,1" VerticalAlignment="Center" Grid.Column="1" Height="20" CornerRadius="3" Margin="14,0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#5516a1ff" Offset="0"/>
+                            <GradientStop Color="Transparent" Offset="0.4"/>
+                            <GradientStop Color="Transparent" Offset="0.6"/>
+                            <GradientStop Color="#5516a1ff" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <TextBlock x:Name="DateTimeText" HorizontalAlignment="Center"
+                 VerticalAlignment="Center" Foreground="white" FontWeight="Normal"  FontSize="20"/>
+                </Border>
+
+                <Border BorderThickness="0,0,0,1" VerticalAlignment="Center" Grid.Column="2">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+                            <GradientStop Color="#AA16a1ff" Offset="0.5"/>
+                            <GradientStop Color="Transparent" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                </Border>
+            </Grid>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,20,0,0"
+         Foreground="White" Name="txt_time" Grid.ColumnSpan="2" >
+ <Run  FontFamily="{StaticResource DigitalDisplay}" FontSize="30" x:Name="TimeTime"/>
+ <Run Text="   "/>
+ <Run x:Name="WeekTime" FontSize="13"/>
+            </TextBlock>
+        </Grid>
+        <Grid x:Name="MainBody" MouseUp="MainBody_MouseUp" Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
     </Grid>
+    
 </Page>

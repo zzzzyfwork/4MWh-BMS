@@ -85,7 +85,7 @@
         <Border Grid.Row="1">
             <GroupBox Header="簇设置" Foreground="White" FontSize="20" Margin="10,0">
                 <Grid>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="725">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
                             <TextBlock Text="组端电压上限" VerticalAlignment="Center" FontSize="18"></TextBlock>
                             <TextBlock Text="1级:" VerticalAlignment="Center" Margin="20,0,5,0" FontSize="18"/>
@@ -94,7 +94,7 @@
                             <TextBox VerticalAlignment="Center" Width="80"  Text="" Foreground="White" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
                             <TextBlock Text="3级:" VerticalAlignment="Center" Margin="20,0,5,0" FontSize="18"/>
                             <TextBox VerticalAlignment="Center" Width="80"  Text="" Foreground="White" Style="{StaticResource UnderlineTextBoxStyle}"></TextBox>
-                            <Button Content="读取信息"   VerticalAlignment="Center"   HorizontalAlignment="Center" Margin="10,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
+                                <Button Content="读取信息" FontSize="10" Width="80" Height="30" VerticalAlignment="Center"  Style="{StaticResource LineButton}"  Background="#3a617e" HorizontalAlignment="Center" Margin="40,5,0,5" Command="{Binding SyncSingleVolThreshInofCommand}"></Button>
                         </StackPanel>
                         <StackPanel  Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
                             <TextBlock Text="组端电压下限" VerticalAlignment="Center" FontSize="18"></TextBlock>

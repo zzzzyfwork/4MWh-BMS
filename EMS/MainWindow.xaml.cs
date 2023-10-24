@@ -20,12 +20,13 @@ namespace EMS
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PCSSettingViewModel pcsviewmodel;
         private MainViewModel viewmodel;
         DevTest_CollectView devTest_Daq;
         DataAnalysis_OptimizeView dataAnalysis_Optimize;
         DevControlView devControlView;
         ParameterSettingView parameterSettingView;
-        SimulationSettingView simulationSettingView;
+        PCSSettingView pCSSettingView;
         public MainWindow()
         {
             InitializeComponent();
@@ -36,6 +37,12 @@ namespace EMS
             DevListView.DataContext = viewmodel.DisplayContent;
             DaqDataRaBtn.IsChecked = true;
             SelectedPage("DaqDataRaBtn");
+            pcsviewmodel = new PCSSettingViewModel();
+            PCSIP.DataContext = pcsviewmodel;
+            PCSTCPModify.DataContext = pcsviewmodel;
+            PCSConncet.DataContext = pcsviewmodel;
+            ConnectStateColor.DataContext = pcsviewmodel;
+            ConncetState.DataContext = pcsviewmodel;
         }
 
         private void ReConnect_Click(object sender, RoutedEventArgs e)
@@ -131,6 +138,7 @@ namespace EMS
                     if (devControlView == null)
                     {
                         devControlView = new DevControlView();
+                        
                     }
                     devControlView.SyncContent(viewmodel.DisplayContent.OnlineBatteryTotalList.ToList(), viewmodel.DisplayContent.ClientList);
                     Mainbody.Content = new Frame() { Content = devControlView };
@@ -145,14 +153,14 @@ namespace EMS
                     Mainbody.Content = new Frame() { Content = parameterSettingView };
                     break;
 
-                case "SimulationSettingRaBtn":
-                    if(simulationSettingView ==null)
+                case "PCSSettingRaBtn":
+                    if(pCSSettingView == null)
                     {
-                        simulationSettingView = new SimulationSettingView();
+                        pCSSettingView = new PCSSettingView();
                         
                     }
-                    simulationSettingView.SyncContent(viewmodel.DisplayContent.OnlineBatteryTotalList.ToList(), viewmodel.DisplayContent.ClientList);
-                    Mainbody.Content = new Frame() { Content = simulationSettingView };
+                    //simulationSettingView.SyncContent(viewmodel.DisplayContent.OnlineBatteryTotalList.ToList(), viewmodel.DisplayContent.ClientList);
+                    Mainbody.Content = new Frame() { Content = pCSSettingView };
                     break;
                 default:
                     break;

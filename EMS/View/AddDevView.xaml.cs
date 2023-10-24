@@ -20,10 +20,14 @@ namespace EMS.View
     /// </summary>
     public partial class AddDevView : Window
     {
-        public bool IsRtu = false;
+        public bool IsPCS =false ;
+        public bool IsBCMU = true;
         public AddDevView()
         {
             InitializeComponent();
+            TCPGrid.Visibility = Visibility.Visible;
+            PCSGrid.Visibility = Visibility.Collapsed;
+            
         }
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
@@ -41,10 +45,17 @@ namespace EMS.View
         private void ChooseTCP_Click(object sender, RoutedEventArgs e)
         {
             TCPGrid.Visibility = Visibility.Visible;
-            
-            IsRtu = false;
+            PCSGrid.Visibility = Visibility.Collapsed;
+            IsBCMU = true;
+            IsPCS = false;
         }
 
-        
+        private void ChoosePCS_Click(object sender, RoutedEventArgs e)
+        {
+            PCSGrid.Visibility = Visibility.Visible;
+            TCPGrid.Visibility = Visibility.Collapsed;
+            IsBCMU = false;
+            IsPCS = true;
+        }
     }
 }

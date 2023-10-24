@@ -577,7 +577,7 @@ namespace EMS.Model
                 char BCMUSNameChar = Convert.ToChar(data[i]);
                 BCMUSNameBuilder.Append(BCMUSNameChar);
    
-            }           
+            }          
             BCMUSName = BCMUSNameBuilder.ToString().TrimStart('0');
         }
 

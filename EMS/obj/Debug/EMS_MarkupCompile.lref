@@ -8,7 +8,6 @@ FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\MyControl\DevControl.xam
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\MyControl\IDInput.xaml;;
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\MyControl\IPInput.xaml;;
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\AboutView.xaml;;
-FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\AddDevArrayView.xaml;;
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\AddDevView.xaml;;
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\DataAnalysisView.xaml;;
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\DataAnalysis_OptimizeView.xaml;;
@@ -16,7 +15,7 @@ FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\DevAlarm_ErrorView.
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\DevControlView.xaml;;
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\DevTest_CollectView.xaml;;
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\ParameterSettingView.xaml;;
+FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\PCSSettingView.xaml;;
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\SeriesBatteryView.xaml;;
-FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\SimulationSettingView.xaml;;
 FE:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\View\SystemSetView.xaml;;
 

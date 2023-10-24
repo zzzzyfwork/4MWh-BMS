@@ -13,31 +13,54 @@
             <RowDefinition/>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="6*"/>
-            
+
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
-            <RadioButton Content="TCP" IsChecked="True" Margin="10 5" Click="ChooseTCP_Click"></RadioButton>
-            <!--<RadioButton Content="RTU" Margin="10 5" Click="ChooseRTU_Click" IsEnabled="False" Visibility="Collapsed"></RadioButton>-->
+            <RadioButton Content="BCMU" x:Name="BCMURaB" IsChecked="True" Margin="10 5" Click="ChooseTCP_Click"></RadioButton>
+            <RadioButton x:Name="PCSRaB" Content="PCS" Margin="10 5" Click="ChoosePCS_Click"  IsChecked="False" ></RadioButton>
         </StackPanel>
 
         <Grid Grid.Row="1" x:Name="TCPGrid">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
-                
-                
+
+
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <TextBlock Text="IP" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+
                 <trl:IPInput x:Name="IPText" Width="150" VerticalAlignment="Center"></trl:IPInput>
             </Grid>
             <Grid Grid.Row="1">
                 <TextBlock Text="Port" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
                 <TextBox x:Name="TCPPort" Width="150" BorderThickness="1" VerticalAlignment="Center"></TextBox>
             </Grid>
-            
 
-        
+
+
+        </Grid>
+        <Grid Grid.Row="1" x:Name="PCSGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="27*"/>
+                    <ColumnDefinition Width="73*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="PCS IP" VerticalAlignment="Center" Margin="10,0,0,0" Grid.ColumnSpan="2"></TextBlock>
+                <trl:IPInput x:Name="IPText2" Width="140" VerticalAlignment="Center" Grid.Column="1" Margin="17,0,125,0"></trl:IPInput>
+
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock Text="Port" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                <TextBox x:Name="TCPPort2" Width="150" BorderThickness="1" VerticalAlignment="Center"></TextBox>
+            </Grid>
+
+
+
         </Grid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>

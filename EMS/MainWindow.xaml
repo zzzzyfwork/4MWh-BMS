@@ -102,6 +102,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
+                
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Border Grid.Column="1" Grid.ColumnSpan="2" BorderBrush="#121F40" BorderThickness="1 0 1 1">
@@ -127,7 +128,7 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"
                     Margin="10,0,0,0">
                 <Image Source="pack://application:,,,/EMS;component/Resource/Image/TNLOGO.png" Width="22" Stretch="Fill" Cursor="" Height="23"/>
-                <TextBlock Text="TN-EMS" Foreground="White" 
+                <TextBlock Text="TN-BMS" Foreground="White" 
                    FontFamily="{StaticResource TitleFont}"
                    FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock.Effect>
@@ -149,29 +150,24 @@
                 <RadioButton   Style="{StaticResource RadioButtonStyle}" x:Name="ValueSettingRaBtn" Checked="RadioButton_Checked">
                     <TextBlock Text="保护参数"  />
                 </RadioButton>
-                <RadioButton   Style="{StaticResource RadioButtonStyle}" x:Name="SimulationSettingRaBtn" Checked="RadioButton_Checked">
-                    <TextBlock Text="仿真参数"  />
+                <RadioButton   Style="{StaticResource RadioButtonStyle}" x:Name="PCSSettingRaBtn" Checked="RadioButton_Checked">
+                    <TextBlock Text="充放电配置"  />
                 </RadioButton>
             </StackPanel>
-            
 
-                <Frame  x:Name="Mainbody" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.Column="1"></Frame>
+            
+            <Frame  x:Name="Mainbody" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.Column="1"></Frame>
             
             
             <Grid Grid.Row="1" Grid.Column="0" Margin="0,0,0,10" x:Name="DevListView">
-                <Grid.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="添加设备" Command="{Binding AddDevCommand}"></MenuItem>
-                        <MenuItem Header="批量添加设备" Command="{Binding AddDevArrayCommand}"></MenuItem>
-                        <MenuItem Header="删除所有设备" Command="{Binding DelAllDevCommand}"></MenuItem>
-                    </ContextMenu>
-                </Grid.ContextMenu>
+                
                 <Grid.Background>
                     <ImageBrush ImageSource="pack://application:,,,/EMS;component/Resource/Image/DevList1.png"/>
                 </Grid.Background>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60"/>
                     <RowDefinition/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Border VerticalAlignment="Top" Height="50" Margin="0,8">
                     <Border.Background>
@@ -187,7 +183,13 @@
                 </Border>
 
                 <ListBox Name="DevList"  ItemsSource="{Binding BatteryTotalList}" SelectedIndex="{Binding CurrentBatterySort}" BorderThickness="0" materialDesign:ListBoxItemAssist.ShowSelection="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Column="0" Grid.Row="1">
-                    
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="添加设备" Command="{Binding AddDevCommand}"></MenuItem>
+
+                            <MenuItem Header="删除所有设备" Command="{Binding DelAllDevCommand}"></MenuItem>
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <Setter Property="Template">
@@ -261,6 +263,38 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
 
+                <Grid Grid.Row="2" >
+                    <Grid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="PCS网络设置" x:Name="PCSTCPModify" Command="{Binding ModifyPCSTCPCommand}"/>
+                            <MenuItem Header="连接" x:Name="PCSConncet" Command="{Binding ConnectPCSTCPCommand}"/>
+                            <MenuItem Header="断开连接"/>
+                            
+                        </ContextMenu>
+                    </Grid.ContextMenu>   
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Image Source="pack://application:,,,/EMS;component/Resource/Image/PCSMachine.png" Width="70" Margin="0,10"  Opacity="0.5"/>
+                        <Grid Grid.Column="1" Margin="0,10,0,10" >
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="PCS" Foreground="white" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+                                <TextBlock x:Name="PCSIP" Text="{Binding IP}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Margin="0,5"/>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Border x:Name="ConnectStateColor" Grid.Column="0" Height="20"  Width="20" CornerRadius="5" Background="{Binding ConnectStateColor}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="ConncetState" Text="{Binding ConncetState}"  FontSize="15" Margin="10,0,0,0" Foreground="White"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            
+                        </Grid>
+                    </Grid>
+                </Grid>
+                    
             </Grid>
             
         </Grid>

@@ -54,7 +54,7 @@ namespace EMS.ViewModel
         public DisplayContentViewModel()
         {
             AddDevCommand = new RelayCommand(AddDev);
-            AddDevArrayCommand = new RelayCommand(AddDevArray);
+           
             DelAllDevCommand = new RelayCommand(DelAllDev);
 
             // 初始化设备列表
@@ -79,35 +79,12 @@ namespace EMS.ViewModel
             manage.DeleteAll();
         }
 
-        private void AddDevArray()
-        {
-            AddDevArrayView view = new AddDevArrayView();
-            if (view.ShowDialog() == true)
-            {
-                // add Modbus TCP Dev Array
-                for (int i = view.beforeN; i <= view.afterN; i++)
-                {
-                    string ip = view.segment + i.ToString();
-                    //! 判断该IP是否存在
-                    var objs = BatteryTotalList.Where(dev => dev.IP == ip).ToList();
-                    if (objs.Count == 0)
-                    {
-                        //! 界面上新增IP
-                        BatteryTotalBase dev = new BatteryTotalBase(ip, view.TCPPort.Text);
-                        dev.BCMUID = (BatteryTotalList.Count + 1).ToString();
-                        BatteryTotalList.Add(dev);
-                        //! 配置文件中新增IP
-                        DevConnectInfoModel entity = new DevConnectInfoModel() { BCMUID = dev.BCMUID, IP = dev.IP, Port = dev.Port };
-                        DevConnectInfoManage manage = new DevConnectInfoManage();
-                        manage.Insert(entity);
-                    }
-                }
-            }
-        }
+       
 
         private void AddDev()
         {
             AddDevView view = new AddDevView();
+            view.PCSRaB.IsEnabled = false;
             if (view.ShowDialog() == true)
             {
                 //! 判断该IP是否存在
@@ -260,10 +237,10 @@ namespace EMS.ViewModel
                 //** 注：应该尽可能的少次多量读取数据，多次读取数据会因为读取次数过于频繁导致丢包
 
 
-                byte[] BCMUData = new byte[90];
-                Array.Copy(client.AddReadRequest(11000, 45), 0, BCMUData, 0, 90);
-                //byte[] BCMUData = new byte[70];
-                //Array.Copy(client.AddReadRequest(11000, 35), 0, BCMUData, 0, 70);
+                //byte[] BCMUData = new byte[90];
+                //Array.Copy(client.AddReadRequest(11000, 45), 0, BCMUData, 0, 90);
+                byte[] BCMUData = new byte[70];
+                Array.Copy(client.AddReadRequest(11000, 35), 0, BCMUData, 0, 70);
 
                 byte[] BMUIDData = new byte[48];
                 Array.Copy(client.AddReadRequest(11045, 24), 0, BMUIDData, 0, 48);
@@ -364,17 +341,17 @@ namespace EMS.ViewModel
 
                     series.Batteries.Clear();
 
-                    //byte[] BMUIDArray = new byte[16];
-                    //Array.Copy(BMUIDData, 16 * i, BMUIDArray, 0, 16);
-                    //int ID1 = BitConverter.ToInt16(BMUIDArray, 0);
-                    //StringBuilder BMUNameBuilder = new StringBuilder();
+                    byte[] BMUIDArray = new byte[16];
+                    Array.Copy(BMUIDData, 16 * i, BMUIDArray, 0, 16);
+                    int ID1 = BitConverter.ToInt16(BMUIDArray, 0);
+                    StringBuilder BMUNameBuilder = new StringBuilder();
 
-                    //for (int k = 0; k < 16; k++)
-                    //{
-                    //    char BMUIDChar = Convert.ToChar(BMUIDArray[k]);
-                    //    BMUNameBuilder.Append(BMUIDChar);
-                    //}
-                    //series.BMUID = BMUNameBuilder.ToString();
+                    for (int k = 0; k < 16; k++)
+                    {
+                        char BMUIDChar = Convert.ToChar(BMUIDArray[k]);
+                        BMUNameBuilder.Append(BMUIDChar);
+                    }
+                    series.BMUID = BMUNameBuilder.ToString();
 
                     for (int j = 0; j < total.BatteriesCountInSeries; j++)
                     {
@@ -770,6 +747,8 @@ namespace EMS.ViewModel
                         //Array.Copy(client.AddReadRequest(11000, 35), 0, BCMUData, 0, 70);
                         byte[] BCMUData = new byte[90];
                         Array.Copy(client.AddReadRequest(11000, 45), 0, BCMUData, 0, 90);
+                        byte[] BMUIDData = new byte[48];
+                        Array.Copy(client.AddReadRequest(11045, 24), 0, BMUIDData, 0, 48);
                         byte[] BMUData = new byte[744];
                         //Array.Copy(client.ReadFunc(10000, 120), 0, BMUData, 0, 240);
                         //Array.Copy(client.ReadFunc(10120, 120), 0, BMUData, 240, 240);
@@ -850,9 +829,19 @@ namespace EMS.ViewModel
                             series.ChargeChannelStateNumber = GetSetBitPositions(series.ChargeChannelState).ToString();
                             bool FaultColorBMU = GetActiveFaultyBMU(series);
                             bool AlarmColorBMU = GetActiveAlarmBMU(series);
+                            byte[] BMUIDArray = new byte[16];
+                            Array.Copy(BMUIDData, 16 * i, BMUIDArray, 0, 16);
+                            int ID1 = BitConverter.ToInt16(BMUIDArray, 0);
+                            StringBuilder BMUNameBuilder = new StringBuilder();
 
-                          
-                                for (int j = 0; j < series.Batteries.Count; j++)
+                            for (int k = 0; k < 16; k++)
+                            {
+                                char BMUIDChar = Convert.ToChar(BMUIDArray[k]);
+                                BMUNameBuilder.Append(BMUIDChar);
+                            }
+                            series.BMUID = BMUNameBuilder.ToString();
+
+                            for (int j = 0; j < series.Batteries.Count; j++)
                             {
                                 BatteryBase battery = series.Batteries[j];
                                 battery.Voltage = BitConverter.ToInt16(BMUData, (j + i * 16) * 2) * 0.001;

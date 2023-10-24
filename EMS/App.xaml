@@ -11,8 +11,10 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.BlueGrey.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/EMS;component/Style/Button.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <FontFamily x:Key="TitleFont">pack://application:,,,/EMS;component/Resource/Image/#TitleFont</FontFamily>
+            <FontFamily x:Key="DigitalDisplay">pack://application:,,,/EMS;component/Resource/Fonts/#DigitalDisplay</FontFamily>
         </ResourceDictionary>
         
     </Application.Resources>
