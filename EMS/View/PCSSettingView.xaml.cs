@@ -26,6 +26,9 @@ namespace EMS.View
             InitializeComponent();
             viewModel = new PCSSettingViewModel();
             this.DataContext = viewModel;
+
         }
+
+       
     }
 }

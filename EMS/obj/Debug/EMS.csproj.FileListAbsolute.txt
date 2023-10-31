@@ -1595,7 +1595,6 @@ E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\View\DevAlarm_E
 E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\View\DevControlView.g.cs
 E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\View\DevTest_CollectView.g.cs
 E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\View\ParameterSettingView.g.cs
-E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\View\PCSSettingView.g.cs
 E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\View\SeriesBatteryView.g.cs
 E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\View\SystemSetView.g.cs
 E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\App.g.cs
@@ -1696,6 +1695,7 @@ E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\bin\Debug\ro\Xceed.Wpf.Av
 E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\View\PCSSettingView.g.cs
 E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\App.baml
 E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\MainWindow.baml
 E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\obj\Debug\MyControl\Battery.baml

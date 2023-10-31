@@ -5,9 +5,36 @@
          xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EMS.View"
+        xmlns:trl="clr-namespace:EMS.MyControl"
         mc:Ignorable="d"
         Title="PCSSettingView" d:DesignHeight="650" d:DesignWidth="1000">
-    
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#7EFFFF" Direction="0.0" ShadowDepth="0.1" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Foreground" Value="white" />
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}">
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="#7EFFFF" Direction="0.5" ShadowDepth="0.1" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -68,5 +95,131 @@
      <Run Text="{Binding WeekTime,Mode=OneWay,ConverterCulture=zh-CN}" FontSize="13"/>
         </TextBlock>
         <TextBlock Grid.Row="1" Foreground="white" Text="{Binding TestInfo}" FontSize="50"/>
+        <Border Background="#ffffff"   Margin="30,10,30,30" CornerRadius="15" Opacity="0.1" Grid.Row="1" />
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="40,20"  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="2" BorderBrush="White" Grid.Row="0" Margin="20,0" CornerRadius="20" Opacity="0.3"  Grid.ColumnSpan="6"></Border> 
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">
+                    <TextBlock Text="名称" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBox Text="{Binding StrategyNameSet}" Width="60" Height="25" Style="{StaticResource MaterialDesignTextBox}" Background="White" Margin="0,5"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
+                    <TextBlock Text="模式" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBox Text="{Binding StrategyModeSet}" Width="60" Height="25" Style="{StaticResource MaterialDesignTextBox}" Background="White"  Margin="0,5"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2">
+                    <TextBlock Text="数值" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBox Text="{Binding StrategyValueSet}" Width="60" Height="25" Style="{StaticResource MaterialDesignTextBox}" Background="White"  Margin="0,5"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
+                    <TextBlock Text="起始时间" Foreground="White" FontSize="20"/>
+                    <trl:DateInput Width="90" Height="25" Margin="2" DateText="{Binding StrategyStartTimeSet, Mode=TwoWay}" FontSize="10"></trl:DateInput>
+                   
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4">
+                    <TextBlock Text="结束时间" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <trl:DateInput Width="90" Height="25" Margin="2" FontSize="10" DateText="{Binding StrategyEndTimeSet, Mode=TwoWay}"></trl:DateInput>
+                </StackPanel>
+                <Button Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" Content="添加" FontSize="20" Command="{Binding AddStrategyCommand}"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Border BorderThickness="2" BorderBrush="White" Grid.Row="1" Margin="60,0,60,40" CornerRadius="20" Opacity="0.3"  ></Border>
+                <DataGrid   x:Name="DataGrid1"  Margin="60,0,60,40" Background="Transparent" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False"
+                          CanUserDeleteRows="True"  HeadersVisibility="Column" RowHeight="40"  GridLinesVisibility="None"
+                           ItemsSource="{Binding StrategyTotal}" SelectionMode="Extended" SelectedItem="{Binding SelectedStrategy}">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridRow">
+                                        <Grid Background="Transparent" >
+                                            <Border x:Name="rowBorder" Width="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                                    BorderThickness="1" VerticalAlignment="Center" CornerRadius="10" BorderBrush="#459CD6">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
+                                                                <Setter Property="Background" Value="#607D8B" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
+                                                                <Setter Property="Background" Value="#607D8B" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+                                                                <Setter Property="Background" Value="Transparent" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
+                                            </Border>
+                                            <!-- 添加一个椭圆元素包装整行内容 -->
+                                            
+                                            <DataGridCellsPresenter />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.CellStyle>
+                        <Style  TargetType="DataGridCell">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridCell">
+                                        <Border Name="cellborder" BorderThickness="1" Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="BorderBrush" TargetName="cellborder"  Value="transparent"/>
+                                            </Trigger>
+                                            
+                                            
+                                            <Trigger Property="IsSelected" Value="true">
+                                                <Setter Property="Foreground" Value="Transparent" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+
+                    </DataGrid.CellStyle>
+                    <DataGrid.Columns >
+                        <DataGridTextColumn Width="*" Binding="{Binding StrategyName}" Header="名称" Foreground="White"  ></DataGridTextColumn>
+                        <DataGridTextColumn Width="*" Binding="{Binding StrategyMode}" Header="模式" Foreground= "white"/>
+                        <DataGridTextColumn Width="*" Binding="{Binding StrategyValue}" Header="数值" Foreground= "White"/>
+                        <DataGridTextColumn Width="*" Binding="{Binding StrategyStartTime}" Header="起始时间" Foreground= "White"/>
+                        <DataGridTextColumn Width="*" Binding="{Binding StrategyEndTime}" Header="结束时间" Foreground= "White"/>
+                        <DataGridTemplateColumn Header="操作" Width="*" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="删除" Command="{Binding DataContext.DeleteStrategyCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Cursor=""  />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+       
     </Grid>
 </Page>

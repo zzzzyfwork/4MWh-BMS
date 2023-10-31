@@ -12,9 +12,9 @@ DEBUG;TRACE
 E:\Work\PBC\EMS\9-18\EMS-ZYF_Modify\EMS-ZYF_Modify\EMS\App.xaml
 1925954546
 28620869555
-53104368270
+561948443017
 45-1082204358
 MainWindow.xaml;MyControl\Battery.xaml;MyControl\DataControl.xaml;MyControl\DateInput.xaml;MyControl\DevControl.xaml;MyControl\IDInput.xaml;MyControl\IPInput.xaml;Style\Button.xaml;View\AboutView.xaml;View\AddDevView.xaml;View\DataAnalysisView.xaml;View\DataAnalysis_OptimizeView.xaml;View\DevAlarm_ErrorView.xaml;View\DevControlView.xaml;View\DevTest_CollectView.xaml;View\ParameterSettingView.xaml;View\PCSSettingView.xaml;View\SeriesBatteryView.xaml;View\SystemSetView.xaml;
 
-True
+False
 

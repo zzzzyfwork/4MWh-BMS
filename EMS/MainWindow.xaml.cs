@@ -139,7 +139,7 @@ namespace EMS
                     {
                         devControlView = new DevControlView();
                         
-                    }
+                    } 
                     devControlView.SyncContent(viewmodel.DisplayContent.OnlineBatteryTotalList.ToList(), viewmodel.DisplayContent.ClientList);
                     Mainbody.Content = new Frame() { Content = devControlView };
                     break;

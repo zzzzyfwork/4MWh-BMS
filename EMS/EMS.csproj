@@ -204,7 +204,10 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\PCSSettingModel.cs" />
     <Compile Include="Model\SystemConfigurationBase.cs" />
+    <Compile Include="Storage\DB\DBManage\PCSStrategyInfoManage.cs" />
+    <Compile Include="Storage\DB\Models\PCSStrategyInfoModel.cs" />
     <Compile Include="ViewModel\DevControlViewModel.cs" />
     <Compile Include="MyControl\Battery.xaml.cs">
       <DependentUpon>Battery.xaml</DependentUpon>

@@ -27,4 +27,4 @@ namespace EMS.Storage.DB.Models
         public int MaxTemperatureIndex { get; set; }
         public DateTime HappenTime { get; set; }
     }
-}
+} 
